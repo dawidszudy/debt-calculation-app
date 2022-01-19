@@ -30,6 +30,6 @@ public class Payment extends Quantum {
                 "valueUnderZero=" + valueUnderZero +
                 ", value=" + value +
                 ", date=" + date +
-                '}';
+                '}' + "\n";
     }
 }

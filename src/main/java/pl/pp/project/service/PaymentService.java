@@ -20,7 +20,7 @@ public class PaymentService {
     @Override
     public String toString() {
         return "AllPayments{" +
-                "listPayments=" + listPayments +
+                "listPayments=" + "\n" + listPayments +
                 '}';
     }
 

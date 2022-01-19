@@ -38,8 +38,9 @@ public class Due extends Quantum {
         return "Due{" +
                 "dueIsZero=" + dueIsZero +
                 ", value=" + value +
+                ", interestOfDue=" + interestOfDue +
                 ", date=" + date +
-                '}';
+                '}' + "\n";
     }
 
 

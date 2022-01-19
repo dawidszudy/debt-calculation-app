@@ -20,7 +20,7 @@ public class DueService {
     @Override
     public String toString() {
         return "AllDues{" +
-                "listDues=" + listDues +
+                "listDues=" + "\n" + listDues +
                 '}';
     }
 
