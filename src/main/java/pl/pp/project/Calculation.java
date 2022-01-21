@@ -20,7 +20,7 @@ public class Calculation {
     private List<Due> ListDuesBeforeCalculation = new ArrayList<>();
     private final BigDecimal interestPercentage = BigDecimal.valueOf(0.07);
     private final int NUMBER_DAYS_OF_YEAR = 365;
-    protected final LocalDate finishDate = LocalDate.of(2016, Month.OCTOBER, 30);
+    protected final LocalDate finishDate = LocalDate.of(2017, Month.OCTOBER, 31);
     protected BigDecimal sumDues = BigDecimal.valueOf(0);
 
     public Calculation() {
@@ -87,31 +87,66 @@ public class Calculation {
                         BigDecimal action = sumInterestAndDue.subtract(payment.getValue());
                         System.out.println("action=" + action);             //point
 
-                        if ( action.compareTo(BigDecimal.ZERO) > 0 ) {
+                        if (interestOfDue.compareTo(payment.getValue()) > 0 ) {
+                            //warunek dla odsetki większe niż zapłata
+                            System.out.println("KKKKKKKKKKKKKKKKK");
+                            if ( action.compareTo(BigDecimal.ZERO) > 0 ) {
+
+                                payment.setValue(BigDecimal.ZERO);
+                                payment.setValueUnderZero(true);
+                                due.setValue(action);
+                                due.setDate(payment.getDate());/////////////
+                                //przejść do następnego payment
+                                System.out.println("break");
+                                System.out.println();
+                                break;  //ify, niezalecane break
+
+                            } else if ( action.compareTo(BigDecimal.ZERO) <= 0 ) {
+
+                                //przejść do następnego due
+                                due.setValue(BigDecimal.ZERO);
+                                due.setInterestOfDue(BigDecimal.ZERO);
+                                due.setDueIsZero(true);
+
+                                payment.setValue(action.multiply(BigDecimal.valueOf(-1)));
+
+                                System.out.println("payment.getValue()=" + payment.getValue());
+                                System.out.println("continue");
+                                System.out.println();
+                                //continue;
+
+                            }
+
+                        } else if (interestOfDue.compareTo(payment.getValue()) <= 0 ) {
+                            //warunek dla odsetki mniejsze bądz równe niż zapłata
+                            System.out.println("AAAAAAAAAAAAAAAAA");
+                            if ( action.compareTo(BigDecimal.ZERO) > 0 ) {
 
 
-                            payment.setValue(BigDecimal.ZERO);
-                            payment.setValueUnderZero(true);
-                            due.setValue(action);
-                            due.setDate(payment.getDate());/////////////
-                            //przejść do następnego payment
-                            System.out.println("break");
-                            System.out.println();
-                            break;  //ify, niezalecane break
+                                payment.setValue(BigDecimal.ZERO);
+                                payment.setValueUnderZero(true);
+                                due.setValue(action);
+                                due.setDate(payment.getDate());/////////////
+                                //przejść do następnego payment
+                                System.out.println("break");
+                                System.out.println();
+                                break;  //ify, niezalecane break
 
-                        } else if ( action.compareTo(BigDecimal.ZERO) <= 0 ) {
+                            } else if ( action.compareTo(BigDecimal.ZERO) <= 0 ) {
 
-                            //przejść do następnego due
-                            due.setValue(BigDecimal.ZERO);
-                            due.setInterestOfDue(BigDecimal.ZERO);
-                            due.setDueIsZero(true);
+                                //przejść do następnego due
+                                due.setValue(BigDecimal.ZERO);
+                                due.setInterestOfDue(BigDecimal.ZERO);
+                                due.setDueIsZero(true);
 
-                            payment.setValue(action.multiply(BigDecimal.valueOf(-1)));
+                                payment.setValue(action.multiply(BigDecimal.valueOf(-1)));
 
-                            System.out.println("payment.getValue()=" + payment.getValue());
-                            System.out.println("continue");
-                            System.out.println();
-                            //continue;
+                                System.out.println("payment.getValue()=" + payment.getValue());
+                                System.out.println("continue");
+                                System.out.println();
+                                //continue;
+
+                            }
 
                         }
 
