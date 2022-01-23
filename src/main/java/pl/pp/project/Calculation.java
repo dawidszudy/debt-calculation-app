@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.time.temporal.ChronoUnit.DAYS;
-//import static org.apache.commons.math3.util.Precision.round;
 
 
 public class Calculation {
@@ -22,6 +21,9 @@ public class Calculation {
     private final int NUMBER_DAYS_OF_YEAR = 365;
     protected final LocalDate finishDate = LocalDate.of(2017, Month.OCTOBER, 31);
     protected BigDecimal sumDues = BigDecimal.valueOf(0);
+    protected boolean ActiveInterestHigherThanPayment = false;
+    protected BigDecimal InterestHigherThanPayment = BigDecimal.valueOf(0);
+    private BigDecimal interestOfDue;
 
     public Calculation() {
     }
@@ -38,15 +40,6 @@ public class Calculation {
             if ( !payment.getValueUnderZero() ) {
                 //BigDecimal valueOfPayment = round(payment.getValue(), 2);
                 System.out.println("Payment"); //point
-//            String nameOfDayOfWeekPayment = String.valueOf(payment.getDate().getDayOfWeek());
-//            int numberOfDayOfMonthPayment = payment.getDate().getDayOfMonth();
-//            int monthNumberPayment = payment.getDate().getMonth().getValue();
-//            int yearPayment = payment.getDate().getYear();
-
-//            System.out.println(nameOfDayOfWeekPayment);
-//            System.out.println(numberOfDayOfMonthPayment);
-//            System.out.println(monthNumberPayment);
-//            System.out.println(yearPayment);
 
                 for (Due due : calculationListDues) {
 
@@ -65,7 +58,7 @@ public class Calculation {
                         System.out.println(nameOfDayOfWeekDue); //point
 
 
-                        if ( nameOfDayOfWeekDue.equals("SUNDAY") && monthNumberDue == 8 && numberOfDayOfMonthDue == 15-1 ) {
+                        if ( nameOfDayOfWeekDue.equals("SUNDAY") && monthNumberDue == 8 && numberOfDayOfMonthDue == 15 - 1 ) {
                             subtractionDays = subtractionDays - 2;
                         } else if ( nameOfDayOfWeekDue.equals("SUNDAY") ) {
                             subtractionDays = subtractionDays - 1;
@@ -75,8 +68,21 @@ public class Calculation {
 
                         System.out.println("dueGetValue=" + due.getValue()); //point
                         //BigDecimal interestOfDue1 = round((due.getValue() * interestPercentage * subtractionDays) / numberDaysOfYear, 2);
-                        BigDecimal interestOfDue = (due.getValue().multiply(interestPercentage.multiply(BigDecimal.valueOf(subtractionDays)))).divide(BigDecimal.valueOf(NUMBER_DAYS_OF_YEAR), 2, RoundingMode.HALF_UP);
-                        due.setInterestOfDue(interestOfDue);
+
+                        //liczenie odsetek następnych po wyjątku
+                        if ( !ActiveInterestHigherThanPayment ) {
+                            System.out.println("TRUE");
+                            interestOfDue = (due.getValue().multiply(interestPercentage.multiply(BigDecimal.valueOf(subtractionDays)))).divide(BigDecimal.valueOf(NUMBER_DAYS_OF_YEAR), 2, RoundingMode.HALF_UP);
+                            due.setInterestOfDue(interestOfDue);
+                        } else if ( ActiveInterestHigherThanPayment ) {
+                            System.out.println("FALSE");
+                            interestOfDue = (due.getValue().multiply(interestPercentage.multiply(BigDecimal.valueOf(subtractionDays)))).divide(BigDecimal.valueOf(NUMBER_DAYS_OF_YEAR), 2, RoundingMode.HALF_UP).add(InterestHigherThanPayment);
+                            due.setInterestOfDue(interestOfDue);
+                            System.out.println("!!!!!!!!!!!!= " + interestOfDue);
+                        }
+
+//                        BigDecimal interestOfDue = (due.getValue().multiply(interestPercentage.multiply(BigDecimal.valueOf(subtractionDays)))).divide(BigDecimal.valueOf(NUMBER_DAYS_OF_YEAR), 2, RoundingMode.HALF_UP);
+//                        due.setInterestOfDue(interestOfDue);
 
                         System.out.println("interestOfDue=" + due.getInterestOfDue()); //point
 
@@ -87,14 +93,19 @@ public class Calculation {
                         BigDecimal action = sumInterestAndDue.subtract(payment.getValue());
                         System.out.println("action=" + action);             //point
 
-                        if (interestOfDue.compareTo(payment.getValue()) > 0 ) {
-                            //warunek dla odsetki większe niż zapłata
-                            System.out.println("KKKKKKKKKKKKKKKKK");
+                        //warunek dla odsetki większe niż zapłata
+                        if ( interestOfDue.compareTo(payment.getValue()) > 0 ) {
+                            System.out.println("!!!!!!!!!! Exception");
+
+                            InterestHigherThanPayment = due.getInterestOfDue().subtract(payment.getValue());
+                            ActiveInterestHigherThanPayment = true;
+                            System.out.println("InterestHigherThanPayment= " + InterestHigherThanPayment);
+
                             if ( action.compareTo(BigDecimal.ZERO) > 0 ) {
 
                                 payment.setValue(BigDecimal.ZERO);
                                 payment.setValueUnderZero(true);
-                                due.setValue(action);
+                                //due.setValue(due.getValue());
                                 due.setDate(payment.getDate());/////////////
                                 //przejść do następnego payment
                                 System.out.println("break");
@@ -102,7 +113,7 @@ public class Calculation {
                                 break;  //ify, niezalecane break
 
                             } else if ( action.compareTo(BigDecimal.ZERO) <= 0 ) {
-
+                                System.out.println("!!!! NEVER DO");
                                 //przejść do następnego due
                                 due.setValue(BigDecimal.ZERO);
                                 due.setInterestOfDue(BigDecimal.ZERO);
@@ -117,11 +128,10 @@ public class Calculation {
 
                             }
 
-                        } else if (interestOfDue.compareTo(payment.getValue()) <= 0 ) {
                             //warunek dla odsetki mniejsze bądz równe niż zapłata
-                            System.out.println("AAAAAAAAAAAAAAAAA");
+                        } else if ( interestOfDue.compareTo(payment.getValue()) <= 0 ) {
+                            System.out.println("!!!!!!!!!! NO Exception");
                             if ( action.compareTo(BigDecimal.ZERO) > 0 ) {
-
 
                                 payment.setValue(BigDecimal.ZERO);
                                 payment.setValueUnderZero(true);
@@ -130,6 +140,8 @@ public class Calculation {
                                 //przejść do następnego payment
                                 System.out.println("break");
                                 System.out.println();
+                                InterestHigherThanPayment = BigDecimal.valueOf(0);
+                                ActiveInterestHigherThanPayment = false;
                                 break;  //ify, niezalecane break
 
                             } else if ( action.compareTo(BigDecimal.ZERO) <= 0 ) {
@@ -144,6 +156,8 @@ public class Calculation {
                                 System.out.println("payment.getValue()=" + payment.getValue());
                                 System.out.println("continue");
                                 System.out.println();
+                                InterestHigherThanPayment = BigDecimal.valueOf(0);
+                                ActiveInterestHigherThanPayment = false;
                                 //continue;
 
                             }
@@ -171,7 +185,7 @@ public class Calculation {
                 System.out.println(nameOfDayOfWeekDue); //point
 
 
-                if ( nameOfDayOfWeekDue.equals("SUNDAY") && monthNumberDue == 8 && numberOfDayOfMonthDue == 15-1 ) {
+                if ( nameOfDayOfWeekDue.equals("SUNDAY") && monthNumberDue == 8 && numberOfDayOfMonthDue == 15 - 1 ) {
                     subtractionDays = subtractionDays - 2;
                 } else if ( nameOfDayOfWeekDue.equals("SUNDAY") ) {
                     subtractionDays = subtractionDays - 1;
@@ -181,8 +195,9 @@ public class Calculation {
 
                 System.out.println("dueGetValue=" + due.getValue()); //point
                 //BigDecimal interestOfDue1 = round((due.getValue() * interestPercentage * subtractionDays) / numberDaysOfYear, 2);
-                BigDecimal interestOfDue = (due.getValue().multiply(interestPercentage.multiply(BigDecimal.valueOf(subtractionDays)))).divide(BigDecimal.valueOf(NUMBER_DAYS_OF_YEAR), 2, RoundingMode.HALF_UP);
+                BigDecimal interestOfDue = (due.getValue().multiply(interestPercentage.multiply(BigDecimal.valueOf(subtractionDays)))).divide(BigDecimal.valueOf(NUMBER_DAYS_OF_YEAR), 2, RoundingMode.HALF_UP).add(InterestHigherThanPayment);
                 due.setInterestOfDue(interestOfDue);
+                InterestHigherThanPayment = BigDecimal.valueOf(0);
 
                 System.out.println("interestOfDue=" + due.getInterestOfDue()); //point
 
@@ -230,7 +245,7 @@ public class Calculation {
     @Override
     public String toString() {
         return "Calculation{" +
-        "calculationPaymentList=" + calculationListPayment + "\n" +
+                "calculationPaymentList=" + calculationListPayment + "\n" +
                 "calculationListDues=" + calculationListDues +
                 "sumDues=" + sumDues +
                 '}';
