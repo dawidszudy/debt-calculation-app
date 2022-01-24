@@ -6,7 +6,6 @@ import pl.pp.project.model.Payment;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class Calculation {
     private List<Due> ListDuesBeforeCalculation = new ArrayList<>();
     private final BigDecimal interestPercentage = BigDecimal.valueOf(0.07);
     private final int NUMBER_DAYS_OF_YEAR = 365;
-    protected final LocalDate finishDate = LocalDate.of(2017, Month.OCTOBER, 31);
+    protected LocalDate finishDate;
     protected BigDecimal sumDues = BigDecimal.valueOf(0);
     protected boolean ActiveInterestHigherThanPayment = false;
     protected BigDecimal InterestHigherThanPayment = BigDecimal.valueOf(0);
@@ -208,6 +207,10 @@ public class Calculation {
         }
 
 
+    }
+
+    public void setFinishDate(LocalDate finishDate) {
+        this.finishDate = finishDate;
     }
 
     public List<Payment> getCalculationListPayment() {
