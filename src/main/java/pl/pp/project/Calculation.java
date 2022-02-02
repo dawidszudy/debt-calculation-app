@@ -10,7 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.time.temporal.ChronoUnit.DAYS;
-
+//wyjątki dni w roku kiedy modyfikuję o jeden dzień lub dwa lub trzy - liczbę dni
+// 1 styczeń
+//6 styczeń
+//święta wielkanocne - ruchome
+//1 i 3 maja
+//boże ciało - ruchome
+// 15 sierpień
+//1 listopada
+//11 listopada
+//święta 25 i 26 grudzień
 
 public class Calculation {
     private List<Payment> calculationListPayment;
@@ -58,9 +67,49 @@ public class Calculation {
 
 
                         if ( nameOfDayOfWeekDue.equals("SUNDAY") && monthNumberDue == 8 && numberOfDayOfMonthDue == 15 - 1 ) {
+                            //15 sierpień wojska polskiego
                             subtractionDays = subtractionDays - 2;
-                        } else if ( nameOfDayOfWeekDue.equals("SUNDAY") ) {
+                            System.out.println("war1");
+                        } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 6 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                            //6 styczeń trzech króli w sobotę
+                            subtractionDays = subtractionDays - 2;
+                            System.out.println("war2");
+                        } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 6 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
+                            //6 styczeń trzech króli w piątek
+                            subtractionDays = subtractionDays - 3;
+                            System.out.println("war3");
+                        } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 6 ) {
+                            //6 styczeń trzech króli
                             subtractionDays = subtractionDays - 1;
+                            System.out.println("war4");
+                        } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                            //1 maj sobota
+                            subtractionDays = subtractionDays - 3;
+                            System.out.println("war5");
+                        } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
+                            //1 maj piątek
+                            subtractionDays = subtractionDays - 3;
+                            System.out.println("war6");
+                        } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 ) {
+                            //1 maj normalny dzień i jak niedziela
+                            subtractionDays = subtractionDays - 1;
+                            System.out.println("war7");
+                        } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                            //3 maj w sobotę
+                            subtractionDays = subtractionDays - 2;
+                            System.out.println("war8");
+                        } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
+                            //3 maj w piątek
+                            subtractionDays = subtractionDays - 3;
+                            System.out.println("war9");
+                        } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 ) {
+                            //3 maj normalny dzień i jak niedziela
+                            subtractionDays = subtractionDays - 1;
+                            System.out.println("war10");
+                        } else if ( nameOfDayOfWeekDue.equals("SUNDAY") ) {
+                            //ogólny warunek na niedzielę
+                            subtractionDays = subtractionDays - 1;
+                            System.out.println("war100");
                         }
 
                         System.out.println("subtractionDays=" + subtractionDays); //point
