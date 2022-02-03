@@ -69,18 +69,30 @@ public class Calculation {
                                 //15 sierpień wojska polskiego
                                 subtractionDays = subtractionDays - 2;
                                 System.out.println("war1");
+                            } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //1 styczeń w sobotę
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("1 styczeń w sobotę");
+                            } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
+                                //1 styczeń w piątek
+                                subtractionDays = subtractionDays - 3;
+                                System.out.println("1 styczeń w piątek");
+                            } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 1 ) {
+                                //1 styczeń nowy rok
+                                subtractionDays = subtractionDays - 1;
+                                System.out.println("1 styczeń nowy rok");
                             } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 6 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //6 styczeń trzech króli w sobotę
                                 subtractionDays = subtractionDays - 2;
-                                System.out.println("war2");
+                                System.out.println("6 styczeń trzech króli w sobotę");
                             } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 6 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
                                 //6 styczeń trzech króli w piątek
                                 subtractionDays = subtractionDays - 3;
-                                System.out.println("war3");
+                                System.out.println("6 styczeń trzech króli w piątek");
                             } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 6 ) {
                                 //6 styczeń trzech króli
                                 subtractionDays = subtractionDays - 1;
-                                System.out.println("war4");
+                                System.out.println("6 styczeń trzech króli");
                             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //1 maj sobota
                                 subtractionDays = subtractionDays - 3;
@@ -105,6 +117,10 @@ public class Calculation {
                                 //3 maj normalny dzień i jak niedziela
                                 subtractionDays = subtractionDays - 1;
                                 System.out.println("war10");
+                            } else if ( nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //ogólny warunek na niedzielę
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("war11");
                             } else if ( nameOfDayOfWeekDue.equals("SUNDAY") ) {
                                 //ogólny warunek na niedzielę
                                 subtractionDays = subtractionDays - 1;
@@ -119,14 +135,22 @@ public class Calculation {
                                 //15 sierpień wojska polskiego
                                 subtractionDays = subtractionDays - 2;
                                 System.out.println("war1");
+                            } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //1 styczeń w sobotę
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("1 styczeń w sobotę");
+                            } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 1 ) {
+                                //1 styczeń nowy rok
+                                subtractionDays = subtractionDays - 1;
+                                System.out.println("1 styczeń nowy rok");
                             } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 6 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //6 styczeń trzech króli w sobotę
                                 subtractionDays = subtractionDays - 2;
-                                System.out.println("war2");
+                                System.out.println("6 styczeń trzech króli w sobotę");
                             } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 6 ) {
                                 //6 styczeń trzech króli
                                 subtractionDays = subtractionDays - 1;
-                                System.out.println("war4");
+                                System.out.println("6 styczeń trzech króli");
                             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //1 maj sobota
                                 subtractionDays = subtractionDays - 3;
@@ -154,7 +178,7 @@ public class Calculation {
                             } else if ( nameOfDayOfWeekDue.equals("SUNDAY") ) {
                                 //ogólny warunek na niedzielę
                                 subtractionDays = subtractionDays - 1;
-                                System.out.println("war100");
+                                System.out.println("ogólny warunek na niedzielę");
                             }
                         }
 
