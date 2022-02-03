@@ -65,19 +65,7 @@ public class Calculation {
 
                             System.out.println("AFTER: 01 01 2017");
 
-                            if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
-                                //15 sierpień WP w sobotę
-                                subtractionDays = subtractionDays - 2;
-                                System.out.println("15 sierpień WP w sobotę");
-                            } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
-                                //15 sierpień WP w piątek
-                                subtractionDays = subtractionDays - 3;
-                                System.out.println("15 sierpień WP w piątek");
-                            } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 ) {
-                                //15 sierpień WP
-                                subtractionDays = subtractionDays - 1;
-                                System.out.println("15 sierpień WP");
-                            } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                            if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //1 styczeń w sobotę
                                 subtractionDays = subtractionDays - 2;
                                 System.out.println("1 styczeń w sobotę");
@@ -101,6 +89,30 @@ public class Calculation {
                                 //6 styczeń trzech króli
                                 subtractionDays = subtractionDays - 1;
                                 System.out.println("6 styczeń trzech króli");
+                            } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //15 sierpień WP w sobotę
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("15 sierpień WP w sobotę");
+                            } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
+                                //15 sierpień WP w piątek
+                                subtractionDays = subtractionDays - 3;
+                                System.out.println("15 sierpień WP w piątek");
+                            } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 ) {
+                                //15 sierpień WP
+                                subtractionDays = subtractionDays - 1;
+                                System.out.println("15 sierpień WP");
+                            } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 11 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //11 listopad w sobotę
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("11 listopad w sobotę");
+                            } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 11 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
+                                //11 listopad w piątek
+                                subtractionDays = subtractionDays - 3;
+                                System.out.println("11 listopad w piątek");
+                            } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 11 ) {
+                                //11 listopad
+                                subtractionDays = subtractionDays - 1;
+                                System.out.println("11 listopad");
                             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //1 maj sobota
                                 subtractionDays = subtractionDays - 3;
@@ -139,15 +151,7 @@ public class Calculation {
 
                             System.out.println("BEFORE: 01 01 2017");
 
-                            if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
-                                //15 sierpień WP w sobotę
-                                subtractionDays = subtractionDays - 2;
-                                System.out.println("15 sierpień WP w sobotę");
-                            } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 ) {
-                                //15 sierpień WP
-                                subtractionDays = subtractionDays - 1;
-                                System.out.println("15 sierpień WP");
-                            } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                            if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //1 styczeń w sobotę
                                 subtractionDays = subtractionDays - 2;
                                 System.out.println("1 styczeń w sobotę");
@@ -163,6 +167,22 @@ public class Calculation {
                                 //6 styczeń trzech króli
                                 subtractionDays = subtractionDays - 1;
                                 System.out.println("6 styczeń trzech króli");
+                            } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //15 sierpień WP w sobotę
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("15 sierpień WP w sobotę");
+                            } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 ) {
+                                //15 sierpień WP
+                                subtractionDays = subtractionDays - 1;
+                                System.out.println("15 sierpień WP");
+                            } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 11 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //11 listopad w sobotę
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("11 listopad w sobotę");
+                            } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 11 ) {
+                                //11 listopad
+                                subtractionDays = subtractionDays - 1;
+                                System.out.println("11 listopad");
                             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //1 maj sobota
                                 subtractionDays = subtractionDays - 3;
