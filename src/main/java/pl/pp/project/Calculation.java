@@ -101,6 +101,18 @@ public class Calculation {
                                 //15 sierpień WP
                                 subtractionDays = subtractionDays - 1;
                                 System.out.println("15 sierpień WP");
+                            } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //1 listopad w sobotę
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("1 listopad w sobotę");
+                            } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
+                                //1 listopad w piątek
+                                subtractionDays = subtractionDays - 3;
+                                System.out.println("1 listopad w piątek");
+                            } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 1 ) {
+                                //1 listopad
+                                subtractionDays = subtractionDays - 1;
+                                System.out.println("1 listopad");
                             } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 11 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //11 listopad w sobotę
                                 subtractionDays = subtractionDays - 2;
@@ -175,6 +187,14 @@ public class Calculation {
                                 //15 sierpień WP
                                 subtractionDays = subtractionDays - 1;
                                 System.out.println("15 sierpień WP");
+                            } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //1 listopad w sobotę
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("1 listopad w sobotę");
+                            } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 1 ) {
+                                //1 listopad
+                                subtractionDays = subtractionDays - 1;
+                                System.out.println("1 listopad");
                             } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 11 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //11 listopad w sobotę
                                 subtractionDays = subtractionDays - 2;
