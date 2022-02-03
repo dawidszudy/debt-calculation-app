@@ -65,10 +65,18 @@ public class Calculation {
 
                             System.out.println("AFTER: 01 01 2017");
 
-                            if ( nameOfDayOfWeekDue.equals("SUNDAY") && monthNumberDue == 8 && numberOfDayOfMonthDue == 15 - 1 ) {
-                                //15 sierpień wojska polskiego
+                            if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //15 sierpień WP w sobotę
                                 subtractionDays = subtractionDays - 2;
-                                System.out.println("war1");
+                                System.out.println("15 sierpień WP w sobotę");
+                            } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
+                                //15 sierpień WP w piątek
+                                subtractionDays = subtractionDays - 3;
+                                System.out.println("15 sierpień WP w piątek");
+                            } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 ) {
+                                //15 sierpień WP
+                                subtractionDays = subtractionDays - 1;
+                                System.out.println("15 sierpień WP");
                             } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //1 styczeń w sobotę
                                 subtractionDays = subtractionDays - 2;
@@ -118,7 +126,7 @@ public class Calculation {
                                 subtractionDays = subtractionDays - 1;
                                 System.out.println("war10");
                             } else if ( nameOfDayOfWeekDue.equals("SATURDAY") ) {
-                                //ogólny warunek na niedzielę
+                                //ogólny warunek na sobotę
                                 subtractionDays = subtractionDays - 2;
                                 System.out.println("war11");
                             } else if ( nameOfDayOfWeekDue.equals("SUNDAY") ) {
@@ -131,10 +139,14 @@ public class Calculation {
 
                             System.out.println("BEFORE: 01 01 2017");
 
-                            if ( nameOfDayOfWeekDue.equals("SUNDAY") && monthNumberDue == 8 && numberOfDayOfMonthDue == 15 - 1 ) {
-                                //15 sierpień wojska polskiego
+                            if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //15 sierpień WP w sobotę
                                 subtractionDays = subtractionDays - 2;
-                                System.out.println("war1");
+                                System.out.println("15 sierpień WP w sobotę");
+                            } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 ) {
+                                //15 sierpień WP
+                                subtractionDays = subtractionDays - 1;
+                                System.out.println("15 sierpień WP");
                             } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //1 styczeń w sobotę
                                 subtractionDays = subtractionDays - 2;

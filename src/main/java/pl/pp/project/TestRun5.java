@@ -12,8 +12,8 @@ import java.time.Month;
 public class TestRun5 {
     public static void main(String[] args) {
 
-        LocalDate dateDue1 = LocalDate.of(2010, Month.JANUARY, 1);
-        LocalDate datePayment1 = LocalDate.of(2010, Month.JANUARY, 11);
+        LocalDate dateDue1 = LocalDate.of(2014, Month.AUGUST, 15);
+        LocalDate datePayment1 = LocalDate.of(2014, Month.AUGUST, 25);
 
         Due due1 = new Due(dateDue1, BigDecimal.valueOf(500.0), false);
         Payment payment1 = new Payment(datePayment1, BigDecimal.valueOf(50.0), false);
