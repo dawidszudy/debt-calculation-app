@@ -188,15 +188,27 @@ public class Calculation {
                             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //1 maj sobota
                                 subtractionDays = subtractionDays - 3;
-                                System.out.println("war5");
+                                System.out.println("1 maj sobota");
                             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
                                 //1 maj piątek
                                 subtractionDays = subtractionDays - 3;
-                                System.out.println("war6");
+                                System.out.println("1 maj piątek");
                             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 ) {
-                                //1 maj normalny dzień i jak niedziela
+                                //1 maj
                                 subtractionDays = subtractionDays - 1;
-                                System.out.println("war7");
+                                System.out.println("1 maj");
+                            } else if ( monthNumberDue == 4 && numberOfDayOfMonthDue == 30 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
+                                //30 kwiecień niedziela
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("30 kwiecień niedziela");
+                            } else if ( monthNumberDue == 4 && numberOfDayOfMonthDue == 30 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //30 kwiecień sobota
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("30 kwiecień sobota");
+                            } else if ( monthNumberDue == 4 && numberOfDayOfMonthDue == 29 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //29 kwiecień sobota
+                                subtractionDays = subtractionDays - 3;
+                                System.out.println("29 kwiecień sobota");
                             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //3 maj w sobotę
                                 subtractionDays = subtractionDays - 2;
@@ -294,15 +306,15 @@ public class Calculation {
                             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //1 maj sobota
                                 subtractionDays = subtractionDays - 3;
-                                System.out.println("war5");
-                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
-                                //1 maj piątek
-                                subtractionDays = subtractionDays - 3;
-                                System.out.println("war6");
+                                System.out.println("1 maj sobota");
                             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 ) {
-                                //1 maj normalny dzień i jak niedziela
+                                //1 maj
                                 subtractionDays = subtractionDays - 1;
-                                System.out.println("war7");
+                                System.out.println("1 maj");
+                            } else if ( monthNumberDue == 4 && numberOfDayOfMonthDue == 30 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
+                                //30 kwiecień niedziela
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("2 maj niedziela");
                             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //3 maj w sobotę
                                 subtractionDays = subtractionDays - 2;
