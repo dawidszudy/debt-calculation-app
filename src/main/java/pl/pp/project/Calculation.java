@@ -113,6 +113,50 @@ public class Calculation {
                                 //4 styczeń sobota
                                 subtractionDays = subtractionDays - 3;
                                 System.out.println("30 grudzień sobota");
+                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //1 maj sobota
+                                subtractionDays = subtractionDays - 3;
+                                System.out.println("1 maj sobota");
+                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
+                                //1 maj piątek
+                                subtractionDays = subtractionDays - 3;
+                                System.out.println("1 maj piątek");
+                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 ) {
+                                //1 maj
+                                subtractionDays = subtractionDays - 1;
+                                System.out.println("1 maj");
+                            } else if ( monthNumberDue == 4 && numberOfDayOfMonthDue == 30 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
+                                //30 kwiecień niedziela
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("30 kwiecień niedziela");
+                            } else if ( monthNumberDue == 4 && numberOfDayOfMonthDue == 30 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //30 kwiecień sobota
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("30 kwiecień sobota");
+                            } else if ( monthNumberDue == 4 && numberOfDayOfMonthDue == 29 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //29 kwiecień sobota
+                                subtractionDays = subtractionDays - 3;
+                                System.out.println("29 kwiecień sobota");
+                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //3 maj w sobotę
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("3 maj w sobotę");
+                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
+                                //3 maj w piątek
+                                subtractionDays = subtractionDays - 3;
+                                System.out.println("3 maj w piątek");
+                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 ) {
+                                //3 maj
+                                subtractionDays = subtractionDays - 1;
+                                System.out.println("3 maj");
+                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 2 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
+                                //2 maj niedziela
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("2 maj niedziela");
+                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 2 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //2 maj sobota
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("2 maj sobota");
                             } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //15 sierpień WP w sobotę
                                 subtractionDays = subtractionDays - 2;
@@ -185,50 +229,46 @@ public class Calculation {
                                 //9 listopada sobota
                                 subtractionDays = subtractionDays - 3;
                                 System.out.println("9 listopada sobota");
-                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
-                                //1 maj sobota
+                            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 25 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //25 grudzień w sobotę
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("25 grudzień w sobotę");
+                            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 25 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
+                                //25 grudzień w piątek
                                 subtractionDays = subtractionDays - 3;
-                                System.out.println("1 maj sobota");
-                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
-                                //1 maj piątek
+                                System.out.println("25 grudzień w piątek");
+                            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 25 && nameOfDayOfWeekDue.equals("THURSDAY") ) {
+                                //25 grudzień w czwartek
+                                subtractionDays = subtractionDays - 4;
+                                System.out.println("25 grudzień w czwartek");
+                            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 25 ) {
+                                //25 grudzień
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("25 grudzień");
+                            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 26 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //26 grudzień w sobotę
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("26 grudzień w sobotę");
+                            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 26 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
+                                //26 grudzień w piątek
                                 subtractionDays = subtractionDays - 3;
-                                System.out.println("1 maj piątek");
-                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 ) {
-                                //1 maj
+                                System.out.println("26 grudzień w piątek");
+                            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 26 ) {
+                                //26 grudzień
                                 subtractionDays = subtractionDays - 1;
-                                System.out.println("1 maj");
-                            } else if ( monthNumberDue == 4 && numberOfDayOfMonthDue == 30 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
-                                //30 kwiecień niedziela
-                                subtractionDays = subtractionDays - 2;
-                                System.out.println("30 kwiecień niedziela");
-                            } else if ( monthNumberDue == 4 && numberOfDayOfMonthDue == 30 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
-                                //30 kwiecień sobota
-                                subtractionDays = subtractionDays - 2;
-                                System.out.println("30 kwiecień sobota");
-                            } else if ( monthNumberDue == 4 && numberOfDayOfMonthDue == 29 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
-                                //29 kwiecień sobota
+                                System.out.println("26 grudzień");
+                            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 24 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
+                                //24 grudzień w niedzielę
                                 subtractionDays = subtractionDays - 3;
-                                System.out.println("29 kwiecień sobota");
-                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
-                                //3 maj w sobotę
-                                subtractionDays = subtractionDays - 2;
-                                System.out.println("3 maj w sobotę");
-                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
-                                //3 maj w piątek
+                                System.out.println("24 grudzień w niedzielę");
+                            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 24 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //24 grudzień w sobotę
                                 subtractionDays = subtractionDays - 3;
-                                System.out.println("3 maj w piątek");
-                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 ) {
-                                //3 maj
-                                subtractionDays = subtractionDays - 1;
-                                System.out.println("3 maj");
-                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 2 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
-                                //2 maj niedziela
-                                subtractionDays = subtractionDays - 2;
-                                System.out.println("2 maj niedziela");
-                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 2 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
-                                //2 maj sobota
-                                subtractionDays = subtractionDays - 2;
-                                System.out.println("2 maj sobota");
+                                System.out.println("24 grudzień w sobotę");
+                            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 23 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //23 grudzień w sobotę
+                                subtractionDays = subtractionDays - 4;
+                                System.out.println("23 grudzień w sobotę");
                             } else if ( nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //ogólny warunek na sobotę
                                 subtractionDays = subtractionDays - 2;
@@ -267,6 +307,30 @@ public class Calculation {
                                 //5 styczeń niedziela
                                 subtractionDays = subtractionDays - 2;
                                 System.out.println("5 styczeń niedziela");
+                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //1 maj sobota
+                                subtractionDays = subtractionDays - 3;
+                                System.out.println("1 maj sobota");
+                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 ) {
+                                //1 maj
+                                subtractionDays = subtractionDays - 1;
+                                System.out.println("1 maj");
+                            } else if ( monthNumberDue == 4 && numberOfDayOfMonthDue == 30 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
+                                //30 kwiecień niedziela
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("2 maj niedziela");
+                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //3 maj w sobotę
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("3 maj w sobotę");
+                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 ) {
+                                //3 maj
+                                subtractionDays = subtractionDays - 1;
+                                System.out.println("3 maj");
+                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 2 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
+                                //2 maj niedziela
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("2 maj niedziela");
                             } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                                 //15 sierpień WP w sobotę
                                 subtractionDays = subtractionDays - 2;
@@ -303,30 +367,30 @@ public class Calculation {
                                 //10 listopad niedziela
                                 subtractionDays = subtractionDays - 2;
                                 System.out.println("10 listopad niedziela");
-                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
-                                //1 maj sobota
+                            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 25 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //25 grudzień w sobotę
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("25 grudzień w sobotę");
+                            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 25 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
+                                //25 grudzień w piątek
                                 subtractionDays = subtractionDays - 3;
-                                System.out.println("1 maj sobota");
-                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 ) {
-                                //1 maj
+                                System.out.println("25 grudzień w sobotę");
+                            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 25 ) {
+                                //25 grudzień
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("25 grudzień");
+                            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 26 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
+                                //26 grudzień w sobotę
+                                subtractionDays = subtractionDays - 2;
+                                System.out.println("26 grudzień w sobotę");
+                            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 26 ) {
+                                //26 grudzień
                                 subtractionDays = subtractionDays - 1;
-                                System.out.println("1 maj");
-                            } else if ( monthNumberDue == 4 && numberOfDayOfMonthDue == 30 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
-                                //30 kwiecień niedziela
-                                subtractionDays = subtractionDays - 2;
-                                System.out.println("2 maj niedziela");
-                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
-                                //3 maj w sobotę
-                                subtractionDays = subtractionDays - 2;
-                                System.out.println("3 maj w sobotę");
-                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 ) {
-                                //3 maj
-                                subtractionDays = subtractionDays - 1;
-                                System.out.println("3 maj");
-                            } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 2 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
-                                //2 maj niedziela
-                                subtractionDays = subtractionDays - 2;
-                                System.out.println("2 maj niedziela");
+                                System.out.println("26 grudzień");
+                            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 24 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
+                                //24 grudzień w niedzielę
+                                subtractionDays = subtractionDays - 3;
+                                System.out.println("24 grudzień w niedzielę");
                             } else if ( nameOfDayOfWeekDue.equals("SUNDAY") ) {
                                 //ogólny warunek na niedzielę
                                 subtractionDays = subtractionDays - 1;
