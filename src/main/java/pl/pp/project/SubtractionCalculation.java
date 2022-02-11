@@ -54,10 +54,10 @@ public class SubtractionCalculation {
             }
 
             if ( condition.isCondition() ) {
-                //1 styczeń w sobotę
-                //daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                daysSubtraction -= condition.getSubtraction();
-                System.out.println("1 styczeń w sobotę");
+//                //1 styczeń w sobotę
+//                //daysSubtraction = twoDaysSubtraction(daysSubtraction);
+//                daysSubtraction -= condition.getSubtraction();
+//                System.out.println("1 styczeń w sobotę");
             } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
                 //1 styczeń w piątek
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
@@ -93,15 +93,15 @@ public class SubtractionCalculation {
             } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 5 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
                 //5 styczeń niedziela
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("31 grudzień niedziela");
+                System.out.println("5 styczeń niedziela");
             } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 5 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 //5 styczeń sobota
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("31 grudzień sobota");
+                System.out.println("5 styczeń sobota");
             } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 4 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 //4 styczeń sobota
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("30 grudzień sobota");
+                System.out.println("4 styczeń sobota");
             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 //1 maj sobota
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
