@@ -21,16 +21,6 @@ class CalculationTest {
     void tearDown() {
     }
 
-    @Test
-    void modifiedDaySubtractionFor10NovemberSundayAfter01012017() {
-        LocalDate dateDue = LocalDate.of(2019, Month.NOVEMBER, 10);
-        LocalDate datePayment = LocalDate.of(2019, Month.NOVEMBER, 20);
-        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
-        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
-
-        long result = subtractionCalculation.calculateDaysSubtraction();
-        assertEquals(8, result);
-    }
 
     @Test
     void modifiedDaySubtractionFor01JanuarySaturdayAfter01012017() {
@@ -162,6 +152,402 @@ class CalculationTest {
 
         long result = subtractionCalculation.calculateDaysSubtraction();
         assertEquals(7, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor1MaySaturdayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2021, Month.MAY, 1);
+        LocalDate datePayment = LocalDate.of(2021, Month.MAY, 11);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(7, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor1MayFridayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2020, Month.MAY, 1);
+        LocalDate datePayment = LocalDate.of(2020, Month.MAY, 11);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(7, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor1MayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2019, Month.MAY, 5);
+        LocalDate datePayment = LocalDate.of(2019, Month.MAY, 15);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(9, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor30AprilSundayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2017, Month.APRIL, 30);
+        LocalDate datePayment = LocalDate.of(2017, Month.MAY, 10);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(8, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor30AprilSaturdayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2022, Month.APRIL, 30);
+        LocalDate datePayment = LocalDate.of(2022, Month.MAY, 10);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(8, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor29AprilSaturdayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2023, Month.APRIL, 29);
+        LocalDate datePayment = LocalDate.of(2023, Month.MAY, 9);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(7, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor3MaySaturdayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2025, Month.MAY, 3);
+        LocalDate datePayment = LocalDate.of(2025, Month.MAY, 13);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(8, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor3MayFridayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2019, Month.MAY, 3);
+        LocalDate datePayment = LocalDate.of(2019, Month.MAY, 13);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(7, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor3MayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2018, Month.MAY, 3);
+        LocalDate datePayment = LocalDate.of(2018, Month.MAY, 13);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(9, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor2MaySaturdayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2020, Month.MAY, 2);
+        LocalDate datePayment = LocalDate.of(2020, Month.MAY, 12);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(8, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor2MaySundayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2021, Month.MAY, 2);
+        LocalDate datePayment = LocalDate.of(2021, Month.MAY, 12);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(8, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor15AugustSaturdayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2020, Month.AUGUST, 15);
+        LocalDate datePayment = LocalDate.of(2020, Month.AUGUST, 25);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(8, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor15AugustFridayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2025, Month.AUGUST, 15);
+        LocalDate datePayment = LocalDate.of(2025, Month.AUGUST, 25);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(7, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor15AugustAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2018, Month.AUGUST, 15);
+        LocalDate datePayment = LocalDate.of(2018, Month.AUGUST, 25);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(9, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor14AugustSundayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2022, Month.AUGUST, 14);
+        LocalDate datePayment = LocalDate.of(2022, Month.AUGUST, 24);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(8, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor14AugustSaturdayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2021, Month.AUGUST, 14);
+        LocalDate datePayment = LocalDate.of(2021, Month.AUGUST, 24);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(8, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor13AugustSaturdayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2022, Month.AUGUST, 13);
+        LocalDate datePayment = LocalDate.of(2022, Month.AUGUST, 23);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(7, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor1NovemberSaturdayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2025, Month.NOVEMBER, 1);
+        LocalDate datePayment = LocalDate.of(2025, Month.NOVEMBER, 11);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(8, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor1NovemberFridayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2019, Month.NOVEMBER, 1);
+        LocalDate datePayment = LocalDate.of(2019, Month.NOVEMBER, 11);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(7, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor1NovemberAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2017, Month.NOVEMBER, 1);
+        LocalDate datePayment = LocalDate.of(2017, Month.NOVEMBER, 11);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(9, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor31OctoberSundayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2021, Month.OCTOBER, 31);
+        LocalDate datePayment = LocalDate.of(2021, Month.NOVEMBER, 10);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(8, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor31OctoberSaturdayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2020, Month.OCTOBER, 31);
+        LocalDate datePayment = LocalDate.of(2020, Month.NOVEMBER, 10);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(8, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor30OctoberSaturdayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2021, Month.OCTOBER, 30);
+        LocalDate datePayment = LocalDate.of(2021, Month.NOVEMBER, 9);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(7, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor11NovemberSaturdayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2017, Month.NOVEMBER, 11);
+        LocalDate datePayment = LocalDate.of(2017, Month.NOVEMBER, 21);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(8, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor11NovemberFridayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2022, Month.NOVEMBER, 11);
+        LocalDate datePayment = LocalDate.of(2022, Month.NOVEMBER, 21);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(7, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor11NovemberAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2020, Month.NOVEMBER, 11);
+        LocalDate datePayment = LocalDate.of(2020, Month.NOVEMBER, 21);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(9, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor10NovemberSundayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2019, Month.NOVEMBER, 10);
+        LocalDate datePayment = LocalDate.of(2019, Month.NOVEMBER, 20);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(8, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor10NovemberSaturdayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2018, Month.NOVEMBER, 10);
+        LocalDate datePayment = LocalDate.of(2018, Month.NOVEMBER, 20);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(8, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor9NovemberSaturdayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2019, Month.NOVEMBER, 9);
+        LocalDate datePayment = LocalDate.of(2019, Month.NOVEMBER, 19);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(7, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor25DecemberSaturdayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2021, Month.DECEMBER, 25);
+        LocalDate datePayment = LocalDate.of(2022, Month.JANUARY, 4);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(8, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor25DecemberFridayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2020, Month.DECEMBER, 25);
+        LocalDate datePayment = LocalDate.of(2021, Month.JANUARY, 4);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(7, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor25DecemberThursdayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2025, Month.DECEMBER, 25);
+        LocalDate datePayment = LocalDate.of(2026, Month.JANUARY, 4);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(6, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor25DecemberAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2017, Month.DECEMBER, 25);
+        LocalDate datePayment = LocalDate.of(2018, Month.JANUARY, 4);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(8, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor24DecemberSundayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2017, Month.DECEMBER, 24);
+        LocalDate datePayment = LocalDate.of(2018, Month.JANUARY, 3);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(7, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor24DecemberSaturdayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2022, Month.DECEMBER, 24);
+        LocalDate datePayment = LocalDate.of(2023, Month.JANUARY, 3);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(7, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor23DecemberSaturdayAfter01012017() {
+        LocalDate dateDue = LocalDate.of(2017, Month.DECEMBER, 23);
+        LocalDate datePayment = LocalDate.of(2018, Month.JANUARY, 2);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(6, result);
     }
 
     @Test

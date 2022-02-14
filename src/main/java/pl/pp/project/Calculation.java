@@ -36,7 +36,6 @@ public class Calculation {
         for (Payment payment : calculationListPayment) {
 
             if ( !payment.getValueUnderZero() ) {
-                //BigDecimal valueOfPayment = round(payment.getValue(), 2);
                 System.out.println("Payment"); //point
 
                 for (Due due : calculationListDues) {
@@ -164,7 +163,6 @@ public class Calculation {
 
                 long daysSubtraction = subtractionCalculation.calculateDaysSubtraction();
                 System.out.println("subtractionDays=" + daysSubtraction); //point
-
                 System.out.println("dueGetValue=" + due.getValue()); //point
 
                 BigDecimal interestOfDue = (due.getValue().multiply(interestPercentage.multiply(BigDecimal.valueOf(daysSubtraction)))).divide(BigDecimal.valueOf(NUMBER_DAYS_OF_YEAR), 2, RoundingMode.HALF_UP).add(InterestHigherThanPayment);
@@ -172,7 +170,6 @@ public class Calculation {
                 InterestHigherThanPayment = BigDecimal.valueOf(0);
 
                 System.out.println("interestOfDue=" + due.getInterestOfDue()); //point
-
                 BigDecimal sumInterestAndDue = interestOfDue.add(due.getValue());
                 System.out.println("sumInterestAndDue=" + sumInterestAndDue); //point
                 sumDues = sumDues.add(due.getValue());
