@@ -16,7 +16,7 @@ public class SubtractionCalculation {
     private int numberOfDayOfMonthDue;
     private int monthNumberDue;
     private LocalDate dueDate;
-    private LocalDate easterDay;
+    private LocalDate easterDate;
     private final LocalDate changeOfSaturdayLikeAsHoliday = LocalDate.of(2017, Month.JANUARY, 1);
 
     public String getNameOfDayOfWeekDue() {
@@ -39,11 +39,11 @@ public class SubtractionCalculation {
 
         int dueYear = dueDate.getYear();             //point
         System.out.println("dueYear: " + dueYear);    //point
-        easterDay = calculateEasterDay(dueYear);
-        System.out.println("easterDay: " + easterDay);  //point
+        easterDate = calculateEasterDate(dueYear);
+        System.out.println("easterDay: " + easterDate);  //point
 
-        int numberMonthEaster = easterDay.getMonth().getValue();
-        int numberDayEaster = easterDay.getDayOfMonth();
+        int numberMonthEaster = easterDate.getMonth().getValue();
+        int numberDayEaster = easterDate.getDayOfMonth();
         System.out.println("numberMonthEaster: " + numberMonthEaster); //point
         System.out.println("numberDayEaster: " + numberDayEaster);     //point
 
@@ -414,7 +414,7 @@ public class SubtractionCalculation {
         return daysSubtraction;
     }
 
-    public LocalDate calculateEasterDay(int year) {
+    public LocalDate calculateEasterDate(int year) {
         int a = year % 19,
                 b = year / 100,
                 c = year % 100,
