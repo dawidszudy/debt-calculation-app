@@ -16,6 +16,7 @@ public class SubtractionCalculation {
     private int numberOfDayOfMonthDue;
     private int monthNumberDue;
     private LocalDate dueDate;
+    private LocalDate easterDay;
     private final LocalDate changeOfSaturdayLikeAsHoliday = LocalDate.of(2017, Month.JANUARY, 1);
 
     public String getNameOfDayOfWeekDue() {
@@ -36,19 +37,43 @@ public class SubtractionCalculation {
         long conditionAfterOrBeforeFirstJanuary2017 = DAYS.between(changeOfSaturdayLikeAsHoliday, dueDate);
         System.out.println("conditionAfterOrBefore: " + conditionAfterOrBeforeFirstJanuary2017);
 
+        int dueYear = dueDate.getYear();             //point
+        System.out.println("dueYear: " + dueYear);    //point
+        easterDay = calculateEasterDay(dueYear);
+        System.out.println("easterDay: " + easterDay);  //point
+
+        int numberMonthEaster = easterDay.getMonth().getValue();
+        int numberDayEaster = easterDay.getDayOfMonth();
+        System.out.println("numberMonthEaster: " + numberMonthEaster); //point
+        System.out.println("numberDayEaster: " + numberDayEaster);     //point
+
 
         if ( conditionAfterOrBeforeFirstJanuary2017 >= 0 ) {
 
             System.out.println("AFTER: 01 01 2017");
 
+//            condition easter day without 2002, 2013, 2024 - 31 march
+//            if ( monthNumberDue == numberMonthEaster && numberOfDayOfMonthDue == numberDayEaster ) {
+//                daysSubtraction = twoDaysSubtraction(daysSubtraction);
+//                System.out.println("niedziela wielkanocna");
+//            } else if ( monthNumberDue == numberMonthEaster && numberOfDayOfMonthDue == numberDayEaster + 1 ) {
+//                daysSubtraction = oneDaysSubtraction(daysSubtraction);
+//                System.out.println("poniedziałek wielkanocny");
+//            } else if ( monthNumberDue == numberMonthEaster && numberOfDayOfMonthDue == numberDayEaster - 1 ) {
+//                daysSubtraction = threeDaysSubtraction(daysSubtraction);
+//                System.out.println("sobota wielkanocna");
+//            }
+
             List<Condition> listConditions = new ArrayList<>();
-            Condition condition = new Condition(monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY"), 2);
+            Condition condition = new Condition(monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY"),
+                    2, "1 styczeń sobota");
 
             listConditions.add(condition);
 
             for (int i = 0; i < listConditions.size(); i++) {
                 if ( listConditions.get(i).isCondition() ) {
                     daysSubtraction -= listConditions.get(i).getSubtraction();
+                    System.out.println(listConditions.get(i).getInfoMessage());
                     break;
                 }
             }
@@ -387,6 +412,24 @@ public class SubtractionCalculation {
             }
         }
         return daysSubtraction;
+    }
+
+    public LocalDate calculateEasterDay(int year) {
+        int a = year % 19,
+                b = year / 100,
+                c = year % 100,
+                d = b / 4,
+                e = b % 4,
+                g = (8 * b + 13) / 25,
+                h = (19 * a + b - d - g + 15) % 30,
+                j = c / 4,
+                k = c % 4,
+                m = (a + 11 * h) / 319,
+                r = (2 * e + 2 * j - k - h + m + 32) % 7,
+                month = (h - m + r + 90) / 25,
+                day = (h - m + r + month + 19) % 32;
+
+        return LocalDate.of(year, month, day);
     }
 
     public long oneDaysSubtraction(long daysSubtraction) {

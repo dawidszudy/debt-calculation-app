@@ -1,12 +1,14 @@
 package pl.pp.project;
 
 public class Condition {
-    boolean condition;
-    int subtraction;
+    private boolean condition;
+    private int subtraction;
+    private String infoMessage;
 
-    public Condition(boolean condition, int subtraction) {
+    public Condition(boolean condition, int subtraction, String infoMessage) {
         this.condition = condition;
         this.subtraction = subtraction;
+        this.infoMessage = infoMessage;
     }
 
 
@@ -24,5 +26,13 @@ public class Condition {
 
     public void setSubtraction(int subtraction) {
         this.subtraction = subtraction;
+    }
+
+    public String getInfoMessage() {
+        return infoMessage;
+    }
+
+    public void setInfoMessage(String infoMessage) {
+        this.infoMessage = infoMessage;
     }
 }
