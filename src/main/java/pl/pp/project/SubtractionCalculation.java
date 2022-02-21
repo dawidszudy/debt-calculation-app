@@ -29,6 +29,7 @@ public class SubtractionCalculation {
         numberOfDayOfMonthDue = due.getDate().getDayOfMonth();
         monthNumberDue = due.getDate().getMonth().getValue();
         dueDate = due.getDate();
+        easterDate = calculateEasterDate(dueDate.getYear());
     }
 
 
@@ -37,32 +38,31 @@ public class SubtractionCalculation {
         long conditionAfterOrBeforeFirstJanuary2017 = DAYS.between(changeOfSaturdayLikeAsHoliday, dueDate);
         System.out.println("conditionAfterOrBefore: " + conditionAfterOrBeforeFirstJanuary2017);
 
-        int dueYear = dueDate.getYear();             //point
-        System.out.println("dueYear: " + dueYear);    //point
-        easterDate = calculateEasterDate(dueYear);
-        System.out.println("easterDay: " + easterDate);  //point
 
         int numberMonthEaster = easterDate.getMonth().getValue();
         int numberDayEaster = easterDate.getDayOfMonth();
-        System.out.println("numberMonthEaster: " + numberMonthEaster); //point
-        System.out.println("numberDayEaster: " + numberDayEaster);     //point
 
+        int easterDatePlusOneDayNumberDay = easterDate.plusDays(1).getDayOfMonth();
+        int easterDatePlusOneDayNumberMonth = easterDate.plusDays(1).getMonth().getValue();
+        int easterDateMinusOneDayNumberDay = easterDate.minusDays(1).getDayOfMonth();
+        int easterDateMinusOneDayNumberMonth = easterDate.minusDays(1).getMonth().getValue();
+
+        int corpusChristiNumberDay = easterDate.plusDays(60).getDayOfMonth();
+        int corpusChristiNumberMonth = easterDate.plusDays(60).getMonth().getValue();
+
+        System.out.println("dueYear: " + dueDate.getYear());            //point
+        System.out.println("easterDate: " + easterDate);                //point
+        System.out.println("numberMonthEaster: " + numberMonthEaster + ", numberDayEaster: " + numberDayEaster); //point
+        System.out.println("easterDatePlusOneDayNumberMonth: " + easterDatePlusOneDayNumberMonth +
+                ", easterDatePlusOneDayNumberDay: " + easterDatePlusOneDayNumberDay);      //point
+        System.out.println("easterDateMinusOneDayNumberMonth: " + easterDateMinusOneDayNumberMonth +
+                ", easterDateMinusOneDayNumberDay: " + easterDateMinusOneDayNumberDay);    //point
+        System.out.println("corpusChristiNumberMonth: " + corpusChristiNumberMonth +
+                ", corpusChristiNumberDay: " + corpusChristiNumberDay);                  //point
 
         if ( conditionAfterOrBeforeFirstJanuary2017 >= 0 ) {
 
             System.out.println("AFTER: 01 01 2017");
-
-//            condition easter day without 2002, 2013, 2024 - 31 march
-//            if ( monthNumberDue == numberMonthEaster && numberOfDayOfMonthDue == numberDayEaster ) {
-//                daysSubtraction = twoDaysSubtraction(daysSubtraction);
-//                System.out.println("niedziela wielkanocna");
-//            } else if ( monthNumberDue == numberMonthEaster && numberOfDayOfMonthDue == numberDayEaster + 1 ) {
-//                daysSubtraction = oneDaysSubtraction(daysSubtraction);
-//                System.out.println("poniedziałek wielkanocny");
-//            } else if ( monthNumberDue == numberMonthEaster && numberOfDayOfMonthDue == numberDayEaster - 1 ) {
-//                daysSubtraction = threeDaysSubtraction(daysSubtraction);
-//                System.out.println("sobota wielkanocna");
-//            }
 
             List<Condition> listConditions = new ArrayList<>();
             Condition condition = new Condition(monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY"),
@@ -127,6 +127,18 @@ public class SubtractionCalculation {
                 //4 styczeń sobota
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
                 System.out.println("4 styczeń sobota");
+            } else if ( monthNumberDue == numberMonthEaster && numberOfDayOfMonthDue == numberDayEaster ) {
+                daysSubtraction = twoDaysSubtraction(daysSubtraction);
+                System.out.println("niedziela wielkanocna");
+            } else if ( monthNumberDue == easterDatePlusOneDayNumberMonth && numberOfDayOfMonthDue == easterDatePlusOneDayNumberDay ) {
+                daysSubtraction = oneDaysSubtraction(daysSubtraction);
+                System.out.println("poniedziałek wielkanocny");
+            } else if ( monthNumberDue == easterDateMinusOneDayNumberMonth && numberOfDayOfMonthDue == easterDateMinusOneDayNumberDay ) {
+                daysSubtraction = threeDaysSubtraction(daysSubtraction);
+                System.out.println("sobota wielkanocna");
+            } else if ( monthNumberDue == corpusChristiNumberMonth && numberOfDayOfMonthDue == corpusChristiNumberDay ) {
+                daysSubtraction = oneDaysSubtraction(daysSubtraction);
+                System.out.println("boże ciało");
             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 //1 maj sobota
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
@@ -321,6 +333,15 @@ public class SubtractionCalculation {
                 //5 styczeń niedziela
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
                 System.out.println("5 styczeń niedziela");
+            } else if ( monthNumberDue == numberMonthEaster && numberOfDayOfMonthDue == numberDayEaster ) {
+                daysSubtraction = twoDaysSubtraction(daysSubtraction);
+                System.out.println("niedziela wielkanocna");
+            } else if ( monthNumberDue == easterDatePlusOneDayNumberMonth && numberOfDayOfMonthDue == easterDatePlusOneDayNumberDay ) {
+                daysSubtraction = oneDaysSubtraction(daysSubtraction);
+                System.out.println("poniedziałek wielkanocny");
+            } else if ( monthNumberDue == corpusChristiNumberMonth && numberOfDayOfMonthDue == corpusChristiNumberDay ) {
+                daysSubtraction = oneDaysSubtraction(daysSubtraction);
+                System.out.println("boże ciało");
             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 //1 maj sobota
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
