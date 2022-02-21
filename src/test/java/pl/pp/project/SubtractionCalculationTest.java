@@ -362,5 +362,174 @@ class SubtractionCalculationTest {
         assertEquals(easterDate, result);
     }
 
+    @Test
+    void calculateCorpusChristiDate2000() {
+        LocalDate corpusChristiDate = LocalDate.of(2000,Month.JUNE, 22);
+
+        LocalDate dateDue = LocalDate.of(2000, Month.JANUARY, 1);
+        LocalDate datePayment = LocalDate.of(2022, Month.JANUARY, 11);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        LocalDate result = subtractionCalculation.getCorpusChristiDate();
+
+        assertEquals(corpusChristiDate, result);
+    }
+
+    @Test
+    void calculateCorpusChristiDate2002() {
+        LocalDate corpusChristiDate = LocalDate.of(2002,Month.MAY, 30);
+
+        LocalDate dateDue = LocalDate.of(2002, Month.JANUARY, 1);
+        LocalDate datePayment = LocalDate.of(2022, Month.JANUARY, 11);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        LocalDate result = subtractionCalculation.getCorpusChristiDate();
+
+        assertEquals(corpusChristiDate, result);
+    }
+
+    @Test
+    void calculateCorpusChristiDate2005() {
+        LocalDate corpusChristiDate = LocalDate.of(2005,Month.MAY, 26);
+
+        LocalDate dateDue = LocalDate.of(2005, Month.JANUARY, 1);
+        LocalDate datePayment = LocalDate.of(2022, Month.JANUARY, 11);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        LocalDate result = subtractionCalculation.getCorpusChristiDate();
+
+        assertEquals(corpusChristiDate, result);
+    }
+
+    @Test
+    void calculateCorpusChristiDate2010() {
+        LocalDate corpusChristiDate = LocalDate.of(2010,Month.JUNE, 3);
+
+        LocalDate dateDue = LocalDate.of(2010, Month.JANUARY, 1);
+        LocalDate datePayment = LocalDate.of(2022, Month.JANUARY, 11);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        LocalDate result = subtractionCalculation.getCorpusChristiDate();
+
+        assertEquals(corpusChristiDate, result);
+    }
+
+    @Test
+    void calculateCorpusChristiDate2013() {
+        LocalDate corpusChristiDate = LocalDate.of(2013,Month.MAY, 30);
+
+        LocalDate dateDue = LocalDate.of(2013, Month.JANUARY, 1);
+        LocalDate datePayment = LocalDate.of(2022, Month.JANUARY, 11);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        LocalDate result = subtractionCalculation.getCorpusChristiDate();
+
+        assertEquals(corpusChristiDate, result);
+    }
+
+    @Test
+    void calculateCorpusChristiDate2015() {
+        LocalDate corpusChristiDate = LocalDate.of(2015,Month.JUNE, 4);
+
+        LocalDate dateDue = LocalDate.of(2015, Month.JANUARY, 1);
+        LocalDate datePayment = LocalDate.of(2022, Month.JANUARY, 11);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        LocalDate result = subtractionCalculation.getCorpusChristiDate();
+
+        assertEquals(corpusChristiDate, result);
+    }
+
+    @Test
+    void calculateCorpusChristiDate2017() {
+        LocalDate corpusChristiDate = LocalDate.of(2017,Month.JUNE, 15);
+
+        LocalDate dateDue = LocalDate.of(2017, Month.JANUARY, 1);
+        LocalDate datePayment = LocalDate.of(2022, Month.JANUARY, 11);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        LocalDate result = subtractionCalculation.getCorpusChristiDate();
+
+        assertEquals(corpusChristiDate, result);
+    }
+
+    @Test
+    void calculateCorpusChristiDate2019() {
+        LocalDate corpusChristiDate = LocalDate.of(2019,Month.JUNE, 20);
+
+        LocalDate dateDue = LocalDate.of(2019, Month.JANUARY, 1);
+        LocalDate datePayment = LocalDate.of(2022, Month.JANUARY, 11);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        LocalDate result = subtractionCalculation.getCorpusChristiDate();
+
+        assertEquals(corpusChristiDate, result);
+    }
+
+    @Test
+    void calculateCorpusChristiDate2020() {
+        LocalDate corpusChristiDate = LocalDate.of(2020,Month.JUNE, 11);
+
+        LocalDate dateDue = LocalDate.of(2020, Month.JANUARY, 1);
+        LocalDate datePayment = LocalDate.of(2022, Month.JANUARY, 11);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        LocalDate result = subtractionCalculation.getCorpusChristiDate();
+
+        assertEquals(corpusChristiDate, result);
+    }
+
+    @Test
+    void calculateCorpusChristiDate2021() {
+        LocalDate corpusChristiDate = LocalDate.of(2021,Month.JUNE, 3);
+
+        LocalDate dateDue = LocalDate.of(2021, Month.JANUARY, 1);
+        LocalDate datePayment = LocalDate.of(2022, Month.JANUARY, 11);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        LocalDate result = subtractionCalculation.getCorpusChristiDate();
+
+        assertEquals(corpusChristiDate, result);
+    }
+
+    @Test
+    void calculateCorpusChristiDate2022() {
+        LocalDate corpusChristiDate = LocalDate.of(2022,Month.JUNE, 16);
+
+        LocalDate dateDue = LocalDate.of(2022, Month.JANUARY, 1);
+        LocalDate datePayment = LocalDate.of(2022, Month.JANUARY, 11);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        LocalDate result = subtractionCalculation.getCorpusChristiDate();
+
+        assertEquals(corpusChristiDate, result);
+    }
+
+    @Test
+    void calculateCorpusChristiDate2024() {
+        LocalDate corpusChristiDate = LocalDate.of(2024,Month.MAY, 30);
+
+        LocalDate dateDue = LocalDate.of(2024, Month.JANUARY, 1);
+        LocalDate datePayment = LocalDate.of(2024, Month.JANUARY, 11);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        LocalDate result = subtractionCalculation.getCorpusChristiDate();
+
+        assertEquals(corpusChristiDate, result);
+    }
+
+
 
 }
