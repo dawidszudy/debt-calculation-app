@@ -137,41 +137,38 @@ public class SubtractionCalculation {
 
             log.info("BEFORE: 01 01 2011");
 
-            Conditions listConditionsBefore01012017 = new Conditions();
+            Conditions listConditionsBefore01012011 = new Conditions();
 
-            listConditionsBefore01012017.add(monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "1 styczeń w sobotę");
-            listConditionsBefore01012017.add(monthNumberDue == 1 && numberOfDayOfMonthDue == 1, 1, "1 styczeń nowy rok");
-            listConditionsBefore01012017.add(monthNumberDue == 12 && numberOfDayOfMonthDue == 31 && nameOfDayOfWeekDue.equals("SUNDAY"), 2, "31 grudzień niedziela");
-            listConditionsBefore01012017.add(monthNumberDue == 1 && numberOfDayOfMonthDue == 6 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "6 styczeń trzech króli sobota");
-            listConditionsBefore01012017.add(monthNumberDue == 1 && numberOfDayOfMonthDue == 6, 1, "6 styczeń trzech króli");
-            listConditionsBefore01012017.add(monthNumberDue == 1 && numberOfDayOfMonthDue == 5 && nameOfDayOfWeekDue.equals("SUNDAY"), 2, "5 styczeń niedziela");
-            listConditionsBefore01012017.add(monthNumberDue == numberMonthEaster && numberOfDayOfMonthDue == numberDayEaster, 2, "niedziela wielkanocna");
-            listConditionsBefore01012017.add(monthNumberDue == easterDatePlusOneDayNumberMonth && numberOfDayOfMonthDue == easterDatePlusOneDayNumberDay, 1, "poniedziałek wielkanocny");
-            listConditionsBefore01012017.add(monthNumberDue == corpusChristiNumberMonth && numberOfDayOfMonthDue == corpusChristiNumberDay, 1, "boże ciało");
-            listConditionsBefore01012017.add(monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY"), 3, "1 maj sobota");
-            listConditionsBefore01012017.add(monthNumberDue == 5 && numberOfDayOfMonthDue == 1, 1, "1 maj");
-            listConditionsBefore01012017.add(monthNumberDue == 4 && numberOfDayOfMonthDue == 30 && nameOfDayOfWeekDue.equals("SUNDAY"), 2, "30 kwiecień niedziela");
-            listConditionsBefore01012017.add(monthNumberDue == 5 && numberOfDayOfMonthDue == 3 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "3 maj sobota");
-            listConditionsBefore01012017.add(monthNumberDue == 5 && numberOfDayOfMonthDue == 3, 1, "3 maj");
-            listConditionsBefore01012017.add(monthNumberDue == 5 && numberOfDayOfMonthDue == 2 && nameOfDayOfWeekDue.equals("SUNDAY"), 2, "2 maj niedziela");
-            listConditionsBefore01012017.add(monthNumberDue == 8 && numberOfDayOfMonthDue == 15 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "15 sierpień WP sobota");
-            listConditionsBefore01012017.add(monthNumberDue == 8 && numberOfDayOfMonthDue == 15, 1, "15 sierpień WP");
-            listConditionsBefore01012017.add(monthNumberDue == 8 && numberOfDayOfMonthDue == 14 && nameOfDayOfWeekDue.equals("SUNDAY"), 2, "14 sierpień niedziela");
-            listConditionsBefore01012017.add(monthNumberDue == 11 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "1 listopad sobota");
-            listConditionsBefore01012017.add(monthNumberDue == 11 && numberOfDayOfMonthDue == 1, 1, "1 listopad");
-            listConditionsBefore01012017.add(monthNumberDue == 10 && numberOfDayOfMonthDue == 31 && nameOfDayOfWeekDue.equals("SUNDAY"), 2, "31 październik niedziela");
-            listConditionsBefore01012017.add(monthNumberDue == 11 && numberOfDayOfMonthDue == 11 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "11 listopad sobota");
-            listConditionsBefore01012017.add(monthNumberDue == 11 && numberOfDayOfMonthDue == 11, 1, "11 listopad");
-            listConditionsBefore01012017.add(monthNumberDue == 11 && numberOfDayOfMonthDue == 10 && nameOfDayOfWeekDue.equals("SUNDAY"), 2, "10 listopad niedziela");
-            listConditionsBefore01012017.add(monthNumberDue == 12 && numberOfDayOfMonthDue == 25 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "25 grudzień sobota");
-            listConditionsBefore01012017.add(monthNumberDue == 12 && numberOfDayOfMonthDue == 25 && nameOfDayOfWeekDue.equals("FRIDAY"), 3, "25 grudzień piątek");
-            listConditionsBefore01012017.add(monthNumberDue == 12 && numberOfDayOfMonthDue == 25, 2, "25 grudzień");
-            listConditionsBefore01012017.add(monthNumberDue == 12 && numberOfDayOfMonthDue == 26 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "26 grudzień sobota");
-            listConditionsBefore01012017.add(monthNumberDue == 12 && numberOfDayOfMonthDue == 26, 1, "26 grudzień");
-            listConditionsBefore01012017.add(monthNumberDue == 12 && numberOfDayOfMonthDue == 24 && nameOfDayOfWeekDue.equals("SUNDAY"), 3, "24 grudzień niedziela");
-            listConditionsBefore01012017.add(nameOfDayOfWeekDue.equals("SUNDAY"), 1, "ogólny warunek niedziela");
+            listConditionsBefore01012011.add(monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "1 styczeń w sobotę");
+            listConditionsBefore01012011.add(monthNumberDue == 1 && numberOfDayOfMonthDue == 1, 1, "1 styczeń nowy rok");
+            listConditionsBefore01012011.add(monthNumberDue == 12 && numberOfDayOfMonthDue == 31 && nameOfDayOfWeekDue.equals("SUNDAY"), 2, "31 grudzień niedziela");
+            listConditionsBefore01012011.add(monthNumberDue == numberMonthEaster && numberOfDayOfMonthDue == numberDayEaster, 2, "niedziela wielkanocna");
+            listConditionsBefore01012011.add(monthNumberDue == easterDatePlusOneDayNumberMonth && numberOfDayOfMonthDue == easterDatePlusOneDayNumberDay, 1, "poniedziałek wielkanocny");
+            listConditionsBefore01012011.add(monthNumberDue == corpusChristiNumberMonth && numberOfDayOfMonthDue == corpusChristiNumberDay, 1, "boże ciało");
+            listConditionsBefore01012011.add(monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY"), 3, "1 maj sobota");
+            listConditionsBefore01012011.add(monthNumberDue == 5 && numberOfDayOfMonthDue == 1, 1, "1 maj");
+            listConditionsBefore01012011.add(monthNumberDue == 4 && numberOfDayOfMonthDue == 30 && nameOfDayOfWeekDue.equals("SUNDAY"), 2, "30 kwiecień niedziela");
+            listConditionsBefore01012011.add(monthNumberDue == 5 && numberOfDayOfMonthDue == 3 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "3 maj sobota");
+            listConditionsBefore01012011.add(monthNumberDue == 5 && numberOfDayOfMonthDue == 3, 1, "3 maj");
+            listConditionsBefore01012011.add(monthNumberDue == 5 && numberOfDayOfMonthDue == 2 && nameOfDayOfWeekDue.equals("SUNDAY"), 2, "2 maj niedziela");
+            listConditionsBefore01012011.add(monthNumberDue == 8 && numberOfDayOfMonthDue == 15 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "15 sierpień WP sobota");
+            listConditionsBefore01012011.add(monthNumberDue == 8 && numberOfDayOfMonthDue == 15, 1, "15 sierpień WP");
+            listConditionsBefore01012011.add(monthNumberDue == 8 && numberOfDayOfMonthDue == 14 && nameOfDayOfWeekDue.equals("SUNDAY"), 2, "14 sierpień niedziela");
+            listConditionsBefore01012011.add(monthNumberDue == 11 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "1 listopad sobota");
+            listConditionsBefore01012011.add(monthNumberDue == 11 && numberOfDayOfMonthDue == 1, 1, "1 listopad");
+            listConditionsBefore01012011.add(monthNumberDue == 10 && numberOfDayOfMonthDue == 31 && nameOfDayOfWeekDue.equals("SUNDAY"), 2, "31 październik niedziela");
+            listConditionsBefore01012011.add(monthNumberDue == 11 && numberOfDayOfMonthDue == 11 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "11 listopad sobota");
+            listConditionsBefore01012011.add(monthNumberDue == 11 && numberOfDayOfMonthDue == 11, 1, "11 listopad");
+            listConditionsBefore01012011.add(monthNumberDue == 11 && numberOfDayOfMonthDue == 10 && nameOfDayOfWeekDue.equals("SUNDAY"), 2, "10 listopad niedziela");
+            listConditionsBefore01012011.add(monthNumberDue == 12 && numberOfDayOfMonthDue == 25 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "25 grudzień sobota");
+            listConditionsBefore01012011.add(monthNumberDue == 12 && numberOfDayOfMonthDue == 25 && nameOfDayOfWeekDue.equals("FRIDAY"), 3, "25 grudzień piątek");
+            listConditionsBefore01012011.add(monthNumberDue == 12 && numberOfDayOfMonthDue == 25, 2, "25 grudzień");
+            listConditionsBefore01012011.add(monthNumberDue == 12 && numberOfDayOfMonthDue == 26 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "26 grudzień sobota");
+            listConditionsBefore01012011.add(monthNumberDue == 12 && numberOfDayOfMonthDue == 26, 1, "26 grudzień");
+            listConditionsBefore01012011.add(monthNumberDue == 12 && numberOfDayOfMonthDue == 24 && nameOfDayOfWeekDue.equals("SUNDAY"), 3, "24 grudzień niedziela");
+            listConditionsBefore01012011.add(nameOfDayOfWeekDue.equals("SUNDAY"), 1, "ogólny warunek niedziela");
 
-            modifiedNumberDays(listConditionsBefore01012017);
+            modifiedNumberDays(listConditionsBefore01012011);
 
         } else { //if conditionAfterOrBeforeFirstJanuary2017 < 0
 

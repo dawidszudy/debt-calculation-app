@@ -1002,17 +1002,6 @@ class CalculationTest {
     }
 
     @Test
-    void modifiedDaySubtractionFor06JanuarySaturdayBefore01012017() {
-        LocalDate dateDue = LocalDate.of(2007, Month.JANUARY, 6);
-        LocalDate datePayment = LocalDate.of(2007, Month.JANUARY, 16);
-        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
-        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
-
-        long result = subtractionCalculation.calculateDaysSubtraction();
-        assertEquals(8, result);
-    }
-
-    @Test
     void modifiedDaySubtractionFor06JanuaryBefore01012017() {
         LocalDate dateDue = LocalDate.of(2016, Month.JANUARY, 6);
         LocalDate datePayment = LocalDate.of(2016, Month.JANUARY, 16);
@@ -1269,6 +1258,50 @@ class CalculationTest {
     void modifiedDaySubtractionForSundayBefore01012017() {
         LocalDate dateDue = LocalDate.of(2014, Month.MAY, 18);
         LocalDate datePayment = LocalDate.of(2014, Month.MAY, 28);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(9, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor6JanuaryBefore01012011() {
+        LocalDate dateDue = LocalDate.of(2010, Month.JANUARY, 6);
+        LocalDate datePayment = LocalDate.of(2010, Month.JANUARY, 16);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(10, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor6JanuarySaturdayBefore01012011() {
+        LocalDate dateDue = LocalDate.of(2007, Month.JANUARY, 6);
+        LocalDate datePayment = LocalDate.of(2007, Month.JANUARY, 16);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(10, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor6JanuaryFridayBefore01012011() {
+        LocalDate dateDue = LocalDate.of(2006, Month.JANUARY, 6);
+        LocalDate datePayment = LocalDate.of(2006, Month.JANUARY, 16);
+        Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
+        SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
+
+        long result = subtractionCalculation.calculateDaysSubtraction();
+        assertEquals(10, result);
+    }
+
+    @Test
+    void modifiedDaySubtractionFor5SundayBefore01012011() {
+        LocalDate dateDue = LocalDate.of(2003, Month.JANUARY, 5);
+        LocalDate datePayment = LocalDate.of(2003, Month.JANUARY, 15);
         Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
         SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
 
