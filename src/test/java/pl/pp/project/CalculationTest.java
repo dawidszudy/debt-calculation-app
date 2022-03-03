@@ -178,8 +178,8 @@ class CalculationTest {
 
     @Test
     void modifiedDaySubtractionFor1MayAfter01012017() {
-        LocalDate dateDue = LocalDate.of(2019, Month.MAY, 5);
-        LocalDate datePayment = LocalDate.of(2019, Month.MAY, 15);
+        LocalDate dateDue = LocalDate.of(2019, Month.MAY, 1);
+        LocalDate datePayment = LocalDate.of(2019, Month.MAY, 11);
         Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
         SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, datePayment);
 
