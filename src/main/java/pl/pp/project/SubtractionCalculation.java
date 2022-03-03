@@ -1,16 +1,17 @@
 package pl.pp.project;
 
+
+import org.apache.log4j.Logger;
 import pl.pp.project.model.Due;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.ArrayList;
-import java.util.List;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
 public class SubtractionCalculation {
 
+    private final static Logger log = Logger.getLogger(SubtractionCalculation.class);
     private long daysSubtraction;
     private String nameOfDayOfWeekDue;
     private int numberOfDayOfMonthDue;
@@ -38,7 +39,7 @@ public class SubtractionCalculation {
     public long calculateDaysSubtraction() {
 
         long conditionAfterOrBeforeFirstJanuary2017 = DAYS.between(changeOfSaturdayLikeAsHoliday, dueDate);
-        System.out.println("conditionAfterOrBefore: " + conditionAfterOrBeforeFirstJanuary2017);
+        log.info("conditionAfterOrBefore: " + conditionAfterOrBeforeFirstJanuary2017);
 
 
         int numberMonthEaster = easterDate.getMonth().getValue();
@@ -52,306 +53,335 @@ public class SubtractionCalculation {
         int corpusChristiNumberDay = corpusChristiDate.getDayOfMonth();
         int corpusChristiNumberMonth = corpusChristiDate.getMonth().getValue();
 
-        System.out.println("dueYear: " + dueDate.getYear());            //point
-        System.out.println("easterDate: " + easterDate);                //point
-        System.out.println("numberMonthEaster: " + numberMonthEaster + ", numberDayEaster: " + numberDayEaster); //point
-        System.out.println("easterDatePlusOneDayNumberMonth: " + easterDatePlusOneDayNumberMonth +
+        log.info("dueYear: " + dueDate.getYear());            //point
+        log.info("easterDate: " + easterDate);                //point
+        log.info("numberMonthEaster: " + numberMonthEaster + ", numberDayEaster: " + numberDayEaster); //point
+        log.info("easterDatePlusOneDayNumberMonth: " + easterDatePlusOneDayNumberMonth +
                 ", easterDatePlusOneDayNumberDay: " + easterDatePlusOneDayNumberDay);      //point
-        System.out.println("easterDateMinusOneDayNumberMonth: " + easterDateMinusOneDayNumberMonth +
+        log.info("easterDateMinusOneDayNumberMonth: " + easterDateMinusOneDayNumberMonth +
                 ", easterDateMinusOneDayNumberDay: " + easterDateMinusOneDayNumberDay);    //point
-        System.out.println("corpusChristiNumberMonth: " + corpusChristiNumberMonth +
+        log.info("corpusChristiNumberMonth: " + corpusChristiNumberMonth +
                 ", corpusChristiNumberDay: " + corpusChristiNumberDay);                  //point
 
         if ( conditionAfterOrBeforeFirstJanuary2017 >= 0 ) {
 
-            System.out.println("AFTER: 01 01 2017");
+            log.info("AFTER: 01 01 2017");
 
-            List<Condition> listConditions = new ArrayList<>();
-            Condition condition = new Condition(monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY"),
-                    2, "1 styczeń sobota");
+            Conditions listConditionsAfter01012017 = new Conditions();
 
-            listConditions.add(condition);
+//            Condition condition1 = new Condition();
+            Condition condition2 = new Condition(monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("FRIDAY"), 3, "1 styczeń w piątek");
+            Condition condition3 = new Condition(monthNumberDue == 1 && numberOfDayOfMonthDue == 1, 1, "1 styczeń nowy rok");
+            Condition condition4 = new Condition(monthNumberDue == 12 && numberOfDayOfMonthDue == 31 && nameOfDayOfWeekDue.equals("SUNDAY"), 2, "31 grudzień niedziela");
+            Condition condition5 = new Condition(monthNumberDue == 12 && numberOfDayOfMonthDue == 31 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "31 grudzień sobota");
+            Condition condition6 = new Condition(monthNumberDue == 12 && numberOfDayOfMonthDue == 30 && nameOfDayOfWeekDue.equals("SATURDAY"), 3, "30 grudzień sobota");
+            Condition condition7 = new Condition(monthNumberDue == 1 && numberOfDayOfMonthDue == 6 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "6 styczeń trzech króli sobota");
+            Condition condition8 = new Condition(monthNumberDue == 1 && numberOfDayOfMonthDue == 6 && nameOfDayOfWeekDue.equals("FRIDAY"), 3, "6 styczeń trzech króli piątek");
+            Condition condition9 = new Condition(monthNumberDue == 1 && numberOfDayOfMonthDue == 6, 1, "6 styczeń trzech króli");
+            Condition condition10 = new Condition(monthNumberDue == 1 && numberOfDayOfMonthDue == 5 && nameOfDayOfWeekDue.equals("SUNDAY"), 2, "5 styczeń niedziela");
+            Condition condition11 = new Condition(monthNumberDue == 1 && numberOfDayOfMonthDue == 5 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "5 styczeń sobota");
+            Condition condition12 = new Condition(monthNumberDue == 1 && numberOfDayOfMonthDue == 4 && nameOfDayOfWeekDue.equals("SATURDAY"), 3, "4 styczeń sobota");
+            Condition condition13 = new Condition(monthNumberDue == numberMonthEaster && numberOfDayOfMonthDue == numberDayEaster, 2, "niedziela wielkanocna");
+            Condition condition14 = new Condition(monthNumberDue == easterDatePlusOneDayNumberMonth && numberOfDayOfMonthDue == easterDatePlusOneDayNumberDay, 1, "poniedziałek wielkanocny");
+            Condition condition15 = new Condition(monthNumberDue == easterDateMinusOneDayNumberMonth && numberOfDayOfMonthDue == easterDateMinusOneDayNumberDay, 3, "sobota wielkanocna");
 
-            for (int i = 0; i < listConditions.size(); i++) {
-                if ( listConditions.get(i).isCondition() ) {
-                    daysSubtraction -= listConditions.get(i).getSubtraction();
-                    System.out.println(listConditions.get(i).getInfoMessage());
+            listConditionsAfter01012017.add(monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY"), 2, "1 styczeń sobota");
+            listConditionsAfter01012017.add(condition2);
+            listConditionsAfter01012017.add(condition3);
+            listConditionsAfter01012017.add(condition4);
+            listConditionsAfter01012017.add(condition5);
+            listConditionsAfter01012017.add(condition6);
+            listConditionsAfter01012017.add(condition7);
+            listConditionsAfter01012017.add(condition8);
+            listConditionsAfter01012017.add(condition9);
+            listConditionsAfter01012017.add(condition10);
+            listConditionsAfter01012017.add(condition11);
+            listConditionsAfter01012017.add(condition12);
+            listConditionsAfter01012017.add(condition13);
+            listConditionsAfter01012017.add(condition14);
+            listConditionsAfter01012017.add(condition15);
+
+            for (int i = 0; i < listConditionsAfter01012017.getConditionsList().size(); i++) {
+                if ( listConditionsAfter01012017.get(i).isCondition() ) {
+                    daysSubtraction -= listConditionsAfter01012017.get(i).getSubtraction();
+                    log.info(listConditionsAfter01012017.get(i).getInfoMessage());
                     break;
                 }
             }
 
-            if ( condition.isCondition() ) {
+//            if ( condition1.isCondition() ) {
 //                //1 styczeń w sobotę
 //                //daysSubtraction = twoDaysSubtraction(daysSubtraction);
 //                daysSubtraction -= condition.getSubtraction();
-//                System.out.println("1 styczeń w sobotę");
-            } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
-                daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("1 styczeń w piątek");
-            } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 1 ) {
+//                log.info();("1 styczeń w sobotę");
+//            } else if ( condition2.isCondition() ) {
+//                daysSubtraction = threeDaysSubtraction(daysSubtraction);
+//                log.info();("1 styczeń w piątek");
+//            } else if ( condition3.isCondition()) {
+//                daysSubtraction = oneDaysSubtraction(daysSubtraction);
+//                log.info();("1 styczeń nowy rok");
+//            } else if ( condition4.isCondition() ) {
+//                daysSubtraction = twoDaysSubtraction(daysSubtraction);
+//                log.info();("31 grudzień niedziela");
+//            } else if ( condition5.isCondition() ) {
+//                daysSubtraction = twoDaysSubtraction(daysSubtraction);
+//                log.info();("31 grudzień sobota");
+//            } else if ( condition6.isCondition() ) {
+//                daysSubtraction = threeDaysSubtraction(daysSubtraction);
+//                log.info();("30 grudzień sobota");
+//            } else if ( condition7.isCondition() ) {
+//                daysSubtraction = twoDaysSubtraction(daysSubtraction);
+//                log.info();("6 styczeń trzech króli sobota");
+//            } else if ( condition8.isCondition() ) {
+//                daysSubtraction = threeDaysSubtraction(daysSubtraction);
+//                log.info();("6 styczeń trzech króli piątek");
+//            } else if ( condition9.isCondition() ) {
+//                daysSubtraction = oneDaysSubtraction(daysSubtraction);
+//                log.info();("6 styczeń trzech króli");
+//            } else if ( condition10.isCondition()) {
+//                daysSubtraction = twoDaysSubtraction(daysSubtraction);
+//                log.info();("5 styczeń niedziela");
+//            } else if ( condition11.isCondition() ) {
+//                daysSubtraction = twoDaysSubtraction(daysSubtraction);
+//                log.info();("5 styczeń sobota");
+//            } else if ( condition12.isCondition() ) {
+//                daysSubtraction = threeDaysSubtraction(daysSubtraction);
+//                log.info();("4 styczeń sobota");
+//            } else if ( condition13.isCondition() ) {
+//                daysSubtraction = twoDaysSubtraction(daysSubtraction);
+//                log.info();("niedziela wielkanocna");
+//            } else if ( condition14.isCondition() ) {
+//                daysSubtraction = oneDaysSubtraction(daysSubtraction);
+//                log.info();("poniedziałek wielkanocny");
+//            } else if ( condition15.isCondition()) {
+//                daysSubtraction = threeDaysSubtraction(daysSubtraction);
+//                log.info();("sobota wielkanocna");
+            /*} else*/
+            if ( monthNumberDue == corpusChristiNumberMonth && numberOfDayOfMonthDue == corpusChristiNumberDay ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("1 styczeń nowy rok");
-            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 31 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
-                daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("31 grudzień niedziela");
-            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 31 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
-                daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("31 grudzień sobota");
-            } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 30 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
-                daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("30 grudzień sobota");
-            } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 6 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
-                daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("6 styczeń trzech króli sobota");
-            } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 6 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
-                daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("6 styczeń trzech króli piątek");
-            } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 6 ) {
-                daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("6 styczeń trzech króli");
-            } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 5 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
-                daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("5 styczeń niedziela");
-            } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 5 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
-                daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("5 styczeń sobota");
-            } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 4 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
-                daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("4 styczeń sobota");
-            } else if ( monthNumberDue == numberMonthEaster && numberOfDayOfMonthDue == numberDayEaster ) {
-                daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("niedziela wielkanocna");
-            } else if ( monthNumberDue == easterDatePlusOneDayNumberMonth && numberOfDayOfMonthDue == easterDatePlusOneDayNumberDay ) {
-                daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("poniedziałek wielkanocny");
-            } else if ( monthNumberDue == easterDateMinusOneDayNumberMonth && numberOfDayOfMonthDue == easterDateMinusOneDayNumberDay ) {
-                daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("sobota wielkanocna");
-            } else if ( monthNumberDue == corpusChristiNumberMonth && numberOfDayOfMonthDue == corpusChristiNumberDay ) {
-                daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("boże ciało");
+                log.info("boże ciało");
             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("1 maj sobota");
+                log.info("1 maj sobota");
             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("1 maj piątek");
+                log.info("1 maj piątek");
             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("1 maj");
+                log.info("1 maj");
             } else if ( monthNumberDue == 4 && numberOfDayOfMonthDue == 30 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("30 kwiecień niedziela");
+                log.info("30 kwiecień niedziela");
             } else if ( monthNumberDue == 4 && numberOfDayOfMonthDue == 30 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("30 kwiecień sobota");
+                log.info("30 kwiecień sobota");
             } else if ( monthNumberDue == 4 && numberOfDayOfMonthDue == 29 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("29 kwiecień sobota");
+                log.info("29 kwiecień sobota");
             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("3 maj w sobotę");
+                log.info("3 maj w sobotę");
             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("3 maj w piątek");
+                log.info("3 maj w piątek");
             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("3 maj");
+                log.info("3 maj");
             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 2 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("2 maj niedziela");
+                log.info("2 maj niedziela");
             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 2 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("2 maj sobota");
+                log.info("2 maj sobota");
             } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("15 sierpień WP sobota");
+                log.info("15 sierpień WP sobota");
             } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("15 sierpień WP piątek");
+                log.info("15 sierpień WP piątek");
             } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("15 sierpień WP");
+                log.info("15 sierpień WP");
             } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 14 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("14 sierpień niedziela");
+                log.info("14 sierpień niedziela");
             } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 14 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("14 sierpień sobota");
+                log.info("14 sierpień sobota");
             } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 13 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("13 sierpień sobota");
+                log.info("13 sierpień sobota");
             } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("1 listopad sobota");
+                log.info("1 listopad sobota");
             } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("1 listopad piątek");
+                log.info("1 listopad piątek");
             } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 1 ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("1 listopad");
+                log.info("1 listopad");
             } else if ( monthNumberDue == 10 && numberOfDayOfMonthDue == 31 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("31 październik niedziala");
+                log.info("31 październik niedziala");
             } else if ( monthNumberDue == 10 && numberOfDayOfMonthDue == 31 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("31 październik sobota");
+                log.info("31 październik sobota");
             } else if ( monthNumberDue == 10 && numberOfDayOfMonthDue == 30 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("30 październik sobota");
+                log.info("30 październik sobota");
             } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 11 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("11 listopad sobota");
+                log.info("11 listopad sobota");
             } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 11 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("11 listopad piątek");
+                log.info("11 listopad piątek");
             } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 11 ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("11 listopad");
+                log.info("11 listopad");
             } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 10 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("10 listopada niedziela");
+                log.info("10 listopada niedziela");
             } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 10 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("10 listopada sobota");
+                log.info("10 listopada sobota");
             } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 9 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("9 listopada sobota");
+                log.info("9 listopada sobota");
             } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 25 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("25 grudzień sobota");
+                log.info("25 grudzień sobota");
             } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 25 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("25 grudzień piątek");
+                log.info("25 grudzień piątek");
             } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 25 && nameOfDayOfWeekDue.equals("THURSDAY") ) {
                 daysSubtraction = fourDaysSubtraction(daysSubtraction);
-                System.out.println("25 grudzień czwartek");
+                log.info("25 grudzień czwartek");
             } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 25 ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("25 grudzień");
+                log.info("25 grudzień");
             } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 26 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("26 grudzień sobota");
+                log.info("26 grudzień sobota");
             } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 26 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("26 grudzień piątek");
+                log.info("26 grudzień piątek");
             } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 26 ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("26 grudzień");
+                log.info("26 grudzień");
             } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 24 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("24 grudzień niedziela");
+                log.info("24 grudzień niedziela");
             } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 24 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("24 grudzień sobota");
+                log.info("24 grudzień sobota");
             } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 23 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = fourDaysSubtraction(daysSubtraction);
-                System.out.println("23 grudzień sobota");
+                log.info("23 grudzień sobota");
             } else if ( nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("ogólny warunek sobota");
+                log.info("ogólny warunek sobota");
             } else if ( nameOfDayOfWeekDue.equals("SUNDAY") ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("ogólny warunek niedziela");
+                log.info("ogólny warunek niedziela");
             }
 
         } else { //if conditionAfterOrBeforeFirstJanuary2017 < 0
 
-            System.out.println("BEFORE: 01 01 2017");
+            log.info("BEFORE: 01 01 2017");
 
             if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("1 styczeń w sobotę");
+                log.info("1 styczeń w sobotę");
             } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 1 ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("1 styczeń nowy rok");
+                log.info("1 styczeń nowy rok");
             } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 31 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("31 grudzień niedziela");
+                log.info("31 grudzień niedziela");
             } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 6 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("6 styczeń trzech króli sobota");
+                log.info("6 styczeń trzech króli sobota");
             } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 6 ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("6 styczeń trzech króli");
+                log.info("6 styczeń trzech króli");
             } else if ( monthNumberDue == 1 && numberOfDayOfMonthDue == 5 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("5 styczeń niedziela");
+                log.info("5 styczeń niedziela");
             } else if ( monthNumberDue == numberMonthEaster && numberOfDayOfMonthDue == numberDayEaster ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("niedziela wielkanocna");
+                log.info("niedziela wielkanocna");
             } else if ( monthNumberDue == easterDatePlusOneDayNumberMonth && numberOfDayOfMonthDue == easterDatePlusOneDayNumberDay ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("poniedziałek wielkanocny");
+                log.info("poniedziałek wielkanocny");
             } else if ( monthNumberDue == corpusChristiNumberMonth && numberOfDayOfMonthDue == corpusChristiNumberDay ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("boże ciało");
+                log.info("boże ciało");
             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("1 maj sobota");
+                log.info("1 maj sobota");
             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 1 ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("1 maj");
+                log.info("1 maj");
             } else if ( monthNumberDue == 4 && numberOfDayOfMonthDue == 30 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("30 kwiecień niedziela");
+                log.info("30 kwiecień niedziela");
             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("3 maj sobota");
+                log.info("3 maj sobota");
             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 3 ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("3 maj");
+                log.info("3 maj");
             } else if ( monthNumberDue == 5 && numberOfDayOfMonthDue == 2 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("2 maj niedziela");
+                log.info("2 maj niedziela");
             } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("15 sierpień WP sobota");
+                log.info("15 sierpień WP sobota");
             } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 15 ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("15 sierpień WP");
+                log.info("15 sierpień WP");
             } else if ( monthNumberDue == 8 && numberOfDayOfMonthDue == 14 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("14 sierpień niedziela");
+                log.info("14 sierpień niedziela");
             } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 1 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("1 listopad sobota");
+                log.info("1 listopad sobota");
             } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 1 ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("1 listopad");
+                log.info("1 listopad");
             } else if ( monthNumberDue == 10 && numberOfDayOfMonthDue == 31 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("31 październik niedziela");
+                log.info("31 październik niedziela");
             } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 11 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("11 listopad sobota");
+                log.info("11 listopad sobota");
             } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 11 ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("11 listopad");
+                log.info("11 listopad");
             } else if ( monthNumberDue == 11 && numberOfDayOfMonthDue == 10 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("10 listopad niedziela");
+                log.info("10 listopad niedziela");
             } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 25 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("25 grudzień sobota");
+                log.info("25 grudzień sobota");
             } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 25 && nameOfDayOfWeekDue.equals("FRIDAY") ) {
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("25 grudzień piątek");
+                log.info("25 grudzień piątek");
             } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 25 ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("25 grudzień");
+                log.info("25 grudzień");
             } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 26 && nameOfDayOfWeekDue.equals("SATURDAY") ) {
                 daysSubtraction = twoDaysSubtraction(daysSubtraction);
-                System.out.println("26 grudzień sobota");
+                log.info("26 grudzień sobota");
             } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 26 ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("26 grudzień");
+                log.info("26 grudzień");
             } else if ( monthNumberDue == 12 && numberOfDayOfMonthDue == 24 && nameOfDayOfWeekDue.equals("SUNDAY") ) {
                 daysSubtraction = threeDaysSubtraction(daysSubtraction);
-                System.out.println("24 grudzień niedziela");
+                log.info("24 grudzień niedziela");
             } else if ( nameOfDayOfWeekDue.equals("SUNDAY") ) {
                 daysSubtraction = oneDaysSubtraction(daysSubtraction);
-                System.out.println("ogólny warunek niedziela");
+                log.info("ogólny warunek niedziela");
             }
         }
         return daysSubtraction;
