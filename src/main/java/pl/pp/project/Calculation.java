@@ -70,96 +70,86 @@ public class Calculation {
 
                         log.info("interestOfDue=" + due.getInterestOfDue()); //point
                         BigDecimal sumInterestAndDue = interestOfDue.add(due.getValue());
-
                         log.info("sumInterestAndDue=" + sumInterestAndDue); //point
                         log.info("valueOfPayment=" + payment.getValue()); //point
-
-                        BigDecimal action = sumInterestAndDue.subtract(payment.getValue());
-
-                        log.info("action=" + action);             //point
+                        BigDecimal valueOfDueAfterSubtractThePayment = sumInterestAndDue.subtract(payment.getValue());
+                        log.info("valueOfDueAfterSubtractThePayment=" + valueOfDueAfterSubtractThePayment);             //point
 
                         //warunek dla odsetki większe niż zapłata
                         if ( interestOfDue.compareTo(payment.getValue()) > 0 ) {
                             log.info("!!!!!!!!!! Exception");
-
                             InterestHigherThanPayment = due.getInterestOfDue().subtract(payment.getValue());
                             ActiveInterestHigherThanPayment = true;
                             log.info("InterestHigherThanPayment= " + InterestHigherThanPayment);
 
-                            if ( action.compareTo(BigDecimal.ZERO) > 0 ) {
-
+                            if ( valueOfDueAfterSubtractThePayment.compareTo(BigDecimal.ZERO) > 0 ) {
                                 payment.setValue(BigDecimal.ZERO);
                                 payment.setValueUnderZero(true);
                                 //due.setValue(due.getValue());
-                                due.setDate(payment.getDate());/////////////
-                                //enter to next payment
+                                due.setDate(payment.getDate());
                                 log.info("break");
-                                break;  //ify, niezalecane break
+                                break;  //ify, niezalecane break //enter to next payment
 
-                            } else if ( action.compareTo(BigDecimal.ZERO) <= 0 ) {
+                            } else if ( valueOfDueAfterSubtractThePayment.compareTo(BigDecimal.ZERO) <= 0 ) {
                                 log.info("!!!! NEVER DO");
-                                //enter to next due
                                 due.setValue(BigDecimal.ZERO);
                                 due.setInterestOfDue(BigDecimal.ZERO);
                                 due.setDueIsZero(true);
 
-                                payment.setValue(action.multiply(BigDecimal.valueOf(-1)));
+                                payment.setValue(valueOfDueAfterSubtractThePayment.multiply(BigDecimal.valueOf(-1)));
 
                                 log.info("payment.getValue()=" + payment.getValue());
                                 log.info("continue");
-                                //continue;
+                                //continue;  //enter to next due
                             }
 
                             //warunek dla odsetki mniejsze bądz równe niż zapłata
                         } else if ( interestOfDue.compareTo(payment.getValue()) <= 0 ) {
                             log.info("!!!!!!!!!! NO Exception");
-                            if ( action.compareTo(BigDecimal.ZERO) > 0 ) {
-
+                            if ( valueOfDueAfterSubtractThePayment.compareTo(BigDecimal.ZERO) > 0 ) {
                                 payment.setValue(BigDecimal.ZERO);
                                 payment.setValueUnderZero(true);
-                                due.setValue(action);
+                                due.setValue(valueOfDueAfterSubtractThePayment);
                                 due.setDate(payment.getDate());/////////////
                                 //enter to next payment
-                                log.info("break");
                                 InterestHigherThanPayment = BigDecimal.valueOf(0);
                                 ActiveInterestHigherThanPayment = false;
+                                log.info("break");
                                 break;  //ify, niezalecane break
 
-                            } else if ( action.compareTo(BigDecimal.ZERO) <= 0 ) {
-
+                            } else if ( valueOfDueAfterSubtractThePayment.compareTo(BigDecimal.ZERO) <= 0 ) {
                                 //enter to next due
                                 due.setValue(BigDecimal.ZERO);
                                 due.setInterestOfDue(BigDecimal.ZERO);
                                 due.setDueIsZero(true);
-                                payment.setValue(action.multiply(BigDecimal.valueOf(-1)));
+                                payment.setValue(valueOfDueAfterSubtractThePayment.multiply(BigDecimal.valueOf(-1)));
 
                                 log.info("payment.getValue()=" + payment.getValue());
-                                log.info("continue");
                                 InterestHigherThanPayment = BigDecimal.valueOf(0);
                                 ActiveInterestHigherThanPayment = false;
+                                log.info("continue");
                                 //continue;
                             }
-
                         }
-
 //                      log.info(numberOfDayOfMonthDue);
 //                      log.info(monthNumberDue);
                     }
-
                 }
             }
 
         }
 
-        log.info("RESULT CALCULATION...");
+        calculationResults();
 
+    }
+
+    private void calculationResults() {
+        log.info("RESULT CALCULATION...");
         for (Due due : calculationListDues) {
             if ( !due.getDueIsZero() ) {
 
                 SubtractionCalculation subtractionCalculation = new SubtractionCalculation(due, finishDate);
-
                 log.info(subtractionCalculation.getNameOfDayOfWeekDue()); //point
-
                 long daysSubtraction = subtractionCalculation.calculateDaysSubtraction();
                 log.info("subtractionDays=" + daysSubtraction); //point
                 log.info("dueGetValue=" + due.getValue()); //point
@@ -174,8 +164,6 @@ public class Calculation {
                 sumDues = sumDues.add(due.getValue());
             }
         }
-
-
     }
 
 

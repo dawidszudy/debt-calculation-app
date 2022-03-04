@@ -1,7 +1,5 @@
 package pl.pp.project;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.pp.project.model.Due;
 
@@ -12,15 +10,6 @@ import java.time.Month;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CalculationTest {
-
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
-
 
     @Test
     void modifiedDaySubtractionFor01JanuarySaturdayAfter01012017() {
@@ -1266,7 +1255,7 @@ class CalculationTest {
     }
 
     @Test
-    void modifiedDaySubtractionFor6JanuaryBefore01012011() {
+    void modifiedDaySubtractionFor06JanuaryBefore01012011() {
         LocalDate dateDue = LocalDate.of(2010, Month.JANUARY, 6);
         LocalDate datePayment = LocalDate.of(2010, Month.JANUARY, 16);
         Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
@@ -1277,7 +1266,7 @@ class CalculationTest {
     }
 
     @Test
-    void modifiedDaySubtractionFor6JanuarySaturdayBefore01012011() {
+    void modifiedDaySubtractionFor06JanuarySaturdayBefore01012011() {
         LocalDate dateDue = LocalDate.of(2007, Month.JANUARY, 6);
         LocalDate datePayment = LocalDate.of(2007, Month.JANUARY, 16);
         Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
@@ -1288,7 +1277,7 @@ class CalculationTest {
     }
 
     @Test
-    void modifiedDaySubtractionFor6JanuaryFridayBefore01012011() {
+    void modifiedDaySubtractionFor06JanuaryFridayBefore01012011() {
         LocalDate dateDue = LocalDate.of(2006, Month.JANUARY, 6);
         LocalDate datePayment = LocalDate.of(2006, Month.JANUARY, 16);
         Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
@@ -1299,7 +1288,7 @@ class CalculationTest {
     }
 
     @Test
-    void modifiedDaySubtractionFor5SundayBefore01012011() {
+    void modifiedDaySubtractionFor05SundayBefore01012011() {
         LocalDate dateDue = LocalDate.of(2003, Month.JANUARY, 5);
         LocalDate datePayment = LocalDate.of(2003, Month.JANUARY, 15);
         Due due = new Due(dateDue, BigDecimal.valueOf(500.0), false);
@@ -1308,8 +1297,6 @@ class CalculationTest {
         long result = subtractionCalculation.calculateDaysSubtraction();
         assertEquals(9, result);
     }
-
-
 
 
 }
