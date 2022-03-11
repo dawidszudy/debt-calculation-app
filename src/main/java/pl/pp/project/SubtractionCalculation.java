@@ -216,7 +216,7 @@ public class SubtractionCalculation {
         return easterDate.plusDays(60);
     }
 
-    public LocalDate calculateEasterDate(int year) {
+    LocalDate calculateEasterDate(int year) {
         int a = year % 19,
                 b = year / 100,
                 c = year % 100,
