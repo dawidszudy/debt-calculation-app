@@ -14,10 +14,6 @@ public class Conditions {
         return conditionsList;
     }
 
-    public void add(Condition condition) {
-        conditionsList.add(condition);
-    }
-
     public Condition get(int i) {
         return conditionsList.get(i);
     }

@@ -7,6 +7,7 @@ import pl.pp.project.model.Payment;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +36,9 @@ public class Calculation {
     }
 
     public void calculation() {
+
+        InterestsPeriods interestsPeriodsList = new InterestsPeriods();
+        addInterestsPeriod(interestsPeriodsList);
 
         for (Payment payment : calculationListPayment) {
 
@@ -168,6 +172,31 @@ public class Calculation {
                 sumDues = sumDues.add(due.getValue());
             }
         }
+    }
+
+    private void addInterestsPeriod(InterestsPeriods interestPeriodsList) {
+        interestPeriodsList.add(LocalDate.of(1998, Month.APRIL, 16), LocalDate.of(1999, Month.JANUARY, 31), BigDecimal.valueOf(0.33));
+        interestPeriodsList.add(LocalDate.of(1999, Month.FEBRUARY, 1), LocalDate.of(1999, Month.MAY, 14), BigDecimal.valueOf(0.24));
+        interestPeriodsList.add(LocalDate.of(1999, Month.MAY, 15), LocalDate.of(2000, Month.OCTOBER, 31), BigDecimal.valueOf(0.21));
+        interestPeriodsList.add(LocalDate.of(2000, Month.NOVEMBER, 1), LocalDate.of(2001, Month.DECEMBER, 14), BigDecimal.valueOf(0.30));
+        interestPeriodsList.add(LocalDate.of(2001, Month.DECEMBER, 15), LocalDate.of(2002, Month.JULY, 24), BigDecimal.valueOf(0.20));
+        interestPeriodsList.add(LocalDate.of(2002, Month.JULY, 25), LocalDate.of(2003, Month.JANUARY, 31), BigDecimal.valueOf(0.16));
+        interestPeriodsList.add(LocalDate.of(2003, Month.FEBRUARY, 1), LocalDate.of(2003, Month.SEPTEMBER, 24), BigDecimal.valueOf(0.13));
+        interestPeriodsList.add(LocalDate.of(2003, Month.SEPTEMBER, 25), LocalDate.of(2005, Month.JANUARY, 9), BigDecimal.valueOf(0.1225));
+        interestPeriodsList.add(LocalDate.of(2005, Month.JANUARY, 10), LocalDate.of(2005, Month.OCTOBER, 14), BigDecimal.valueOf(0.135));
+        interestPeriodsList.add(LocalDate.of(2005, Month.OCTOBER, 15), LocalDate.of(2008, Month.DECEMBER, 14), BigDecimal.valueOf(0.1150));
+        interestPeriodsList.add(LocalDate.of(2008, Month.DECEMBER, 15), LocalDate.of(2014, Month.DECEMBER, 22), BigDecimal.valueOf(0.13));
+        interestPeriodsList.add(LocalDate.of(2014, Month.DECEMBER, 23), LocalDate.of(2015, Month.DECEMBER, 31), BigDecimal.valueOf(0.08));
+        interestPeriodsList.add(LocalDate.of(2016, Month.JANUARY, 1), LocalDate.of(2020, Month.MARCH, 17), BigDecimal.valueOf(0.07));
+        interestPeriodsList.add(LocalDate.of(2020, Month.MARCH, 18), LocalDate.of(2020, Month.APRIL, 8), BigDecimal.valueOf(0.065));
+        interestPeriodsList.add(LocalDate.of(2020, Month.APRIL, 9), LocalDate.of(2020, Month.MAY, 28), BigDecimal.valueOf(0.06));
+        interestPeriodsList.add(LocalDate.of(2020, Month.MAY, 29), LocalDate.of(2021, Month.OCTOBER, 6), BigDecimal.valueOf(0.056));
+        interestPeriodsList.add(LocalDate.of(2021, Month.OCTOBER, 7), LocalDate.of(2021, Month.NOVEMBER, 3), BigDecimal.valueOf(0.06));
+        interestPeriodsList.add(LocalDate.of(2021, Month.NOVEMBER, 4), LocalDate.of(2021, Month.DECEMBER, 8), BigDecimal.valueOf(0.0675));
+        interestPeriodsList.add(LocalDate.of(2021, Month.DECEMBER, 9), LocalDate.of(2022, Month.JANUARY, 4), BigDecimal.valueOf(0.0725));
+        interestPeriodsList.add(LocalDate.of(2022, Month.JANUARY, 5), LocalDate.of(2022, Month.FEBRUARY, 8), BigDecimal.valueOf(0.0775));
+        interestPeriodsList.add(LocalDate.of(2022, Month.FEBRUARY, 9), LocalDate.of(2022, Month.MARCH, 8), BigDecimal.valueOf(0.0825));
+        interestPeriodsList.add(LocalDate.of(2022, Month.MARCH, 9), LocalDate.of(2022, Month.MARCH, 14), BigDecimal.valueOf(0.09));
     }
 
 
