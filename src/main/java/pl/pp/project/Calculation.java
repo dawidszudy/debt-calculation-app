@@ -11,6 +11,7 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class Calculation {
 
@@ -25,6 +26,8 @@ public class Calculation {
     private boolean activeInterestHigherThanPayment = false;
     private BigDecimal interestHigherThanPayment = BigDecimal.valueOf(0);
     private BigDecimal interestOfDue;
+    private int firstPeriodOfInterests;
+    private int lastPeriodOfInterests;
 
 
     public Calculation() {
@@ -37,8 +40,9 @@ public class Calculation {
 
     public void calculation() {
 
-        InterestsPeriods interestsPeriodsList = new InterestsPeriods();
-        addInterestsPeriod(interestsPeriodsList);
+        InterestsPeriods interestsPeriods = new InterestsPeriods();
+        addInterestsPeriod(interestsPeriods);
+        InterestsPeriodsForPairDueAndPayment interestsPeriodsForPairAndDuePayment = new InterestsPeriodsForPairDueAndPayment();
 
         for (Payment payment : calculationListPayment) {
 
@@ -48,6 +52,44 @@ public class Calculation {
                 for (Due due : calculationListDues) {
 
                     if ( !due.getDueIsZero() ) {
+                        for (int i = 0; i < interestsPeriods.size(); i++) {
+                            long numberDue = DAYS.between(interestsPeriods.get(i).getAsOfDate(), due.getDate());
+                            System.out.println("numberDue: " + numberDue);
+                            System.out.println("PERCENTAGE: " + interestsPeriods.get(i).getInterestPercentage());
+                            System.out.println("numberDays: " + interestsPeriods.get(i).getNumberDays());
+
+
+                            if ( numberDue < 0 ) {
+                                firstPeriodOfInterests = i-1; //dodać do listy poprzedni element - ostatni plusowy
+                                //interestsPeriods.getInterestPeriodsList().get(i).setNumberDaysForIncompletePeriodWithDue(due.getDate());
+                                //System.out.println(interestsPeriods.getInterestPeriodsList().get(i).getNumberDays());
+                                break;
+                            }
+                        }
+
+                        for (int i = 0; i < interestsPeriods.size(); i++) {
+                            long numberPayment = DAYS.between(interestsPeriods.get(i).getByDate(), payment.getDate());
+                            System.out.println("numberPayment: " + numberPayment);
+                            System.out.println("PERCENTAGE: " + interestsPeriods.get(i).getInterestPercentage());
+
+                            if ( numberPayment < 0 ) {
+                                lastPeriodOfInterests = i; //dodać do listy ten element - pierwszy minusowy
+                                break;
+                            }
+                        }
+
+                        System.out.println("firstPeriodOfInterests: " + firstPeriodOfInterests);
+                        System.out.println("lastPeriodOfInterests: " + lastPeriodOfInterests);
+
+                        //dodać wszystkie elementy pomiędzy tymi pomiędzy
+                        for (int i = 0; i < interestsPeriods.size(); i++) {
+                            if (i >= firstPeriodOfInterests && i<= lastPeriodOfInterests) {
+                                interestsPeriodsForPairAndDuePayment.getInterestPeriodsList().add(interestsPeriods.get(i));
+                            }
+                        }
+
+                        System.out.println("interestsPeriodsForPairAndDuePayment: " + interestsPeriodsForPairAndDuePayment);
+
                         log.info("Due"); //point
                         log.info("due value=" + due.getValue());
                         log.info("due Date: " + due.getDate());

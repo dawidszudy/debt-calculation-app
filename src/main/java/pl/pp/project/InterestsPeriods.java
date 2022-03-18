@@ -20,6 +20,10 @@ public class InterestsPeriods {
         return interestsPeriodsList.get(i);
     }
 
+    public int size() {
+        return interestsPeriodsList.size();
+    }
+
     public void add(LocalDate asOfDate, LocalDate byDate, BigDecimal interestPercentage) {
         interestsPeriodsList.add(new InterestPeriod(asOfDate, byDate, interestPercentage));
     }
